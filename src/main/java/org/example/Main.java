@@ -1,5 +1,4 @@
 package org.example;
-import System.*;
 import System.ViewLayer.View;
 
 import java.io.IOException;
