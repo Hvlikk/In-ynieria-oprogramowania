@@ -12,9 +12,18 @@ public class ItemState implements IItemState {
 	 * 
 	 * @param partID
 	 */
-	public ItemModel[] SelectItemToDisplay(int partID) {
-		// TODO - implement ItemState.SelectItemToDisplay
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> SelectItemToDisplay(int partID) {
+		int itemListID;
+		ArrayList<ItemModel> itemFound = new ArrayList<>();
+		for(int i = 0; i < itemList.size(); i++){
+			itemListID = itemList.get(i).GetPartID(itemList.get(i));
+
+			if (itemListID == partID){
+				itemFound.add(itemList.get(i));
+			} else
+				continue;
+		}
+		return itemFound;
 	}
 
 	public static ItemState getInstance() {

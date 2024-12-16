@@ -25,6 +25,6 @@ public interface IItemState {
 	 * 
 	 * @param partID
 	 */
-	ItemModel[] SelectItemToDisplay(int partID);
+	ArrayList<ItemModel> SelectItemToDisplay(int partID);
 
 }

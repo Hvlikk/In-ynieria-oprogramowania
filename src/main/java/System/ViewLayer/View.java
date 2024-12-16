@@ -20,10 +20,11 @@ public class View {
 		System.out.printf("PU21 przypisanie zlecenia serwisantowi:                              b\n");
 		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:                            c\n");
 		System.out.printf("Wykonaj PU: \n");
-		System.out.printf("PU1: Podglad stanu calego magazynu:              a1\n");
-		System.out.printf("PU2: Podglad stanu magazynowego wybranej czesci: b1\n");
-		System.out.printf("PU9: Aktualizacja stanu magazynu:                c1\n");
-		System.out.printf("PU10: Przywrocenie ostatniej wersji magazynu:    d1\n");
+		System.out.printf("PU1: Podglad stanu calego magazynu:              A\n");
+		System.out.printf("PU2: Podglad stanu magazynowego wybranej czesci: B\n");
+		System.out.printf("PU9: Aktualizacja stanu magazynu:                C\n");
+		System.out.printf("PU10: Przywrocenie ostatniej wersji magazynu:    D\n");
+		System.out.printf("PU1E: Naloz filtr:                               E\n");
 		System.out.printf("PU4 stworzenie zlecenia naprawy:                 e1\n");
 		System.out.printf("PU21 przypisanie zlecenia serwisantowi:          f1\n");
 		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:        g1\n");
@@ -39,7 +40,7 @@ public class View {
 			case "aa": {
 				break;
 			}
-			case "a1": {
+			case "A": {
 				ArrayList<ItemModel> items = new ArrayList<>();
 				items = inventoryClient.ShowAll();
 				if (items.size() > 0){
@@ -54,7 +55,27 @@ public class View {
 
 				break;
 			}
-			case "d1": {
+			case "B":{
+				ArrayList<ItemModel> items = new ArrayList<>();
+				int selectedPartID = myObj.nextInt();
+				items = inventoryClient.ShowPart(selectedPartID);
+
+				if (items.size() > 0){
+					for (int i = 0; i < items.size(); i++)
+					{
+						System.out.println("Part ID:"  + items.get(i).GetPartID(items.get(i)) + " Quantity : " + items.get(i).GetQuantity(items.get(i)));
+					}
+				}
+				else {
+					System.out.println("Nie ma takiej czesci na magazynie.");
+				}
+
+				break;
+			}
+			case "C": {
+
+			}
+			case "D": {
 				createBackupMock();
 				boolean isSuccess = inventoryClient.RecoverBackup(backupMock);
 				if (isSuccess) {
@@ -62,6 +83,7 @@ public class View {
 				} else {
 					System.out.println("Blad podczas przywracania bazy danych!");
 				}
+				break;
 			}
 			case "c": {
 				break;

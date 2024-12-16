@@ -35,9 +35,8 @@ public class ItemService {
 	 * 
 	 * @param partID
 	 */
-	public ItemModel[] ShowPart(int partID) {
-		// TODO - implement ItemService.ShowPart
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ShowPart(int partID) {
+		return presentInventory.ShowPart(partID);
 	}
 
 	public boolean ApplyFilter() {

@@ -20,9 +20,8 @@ public class PresentInventory {
 	 * 
 	 * @param partID
 	 */
-	public ItemModel[] ShowPart(int partID) {
-		// TODO - implement PresentInventory.ShowPart
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ShowPart(int partID) {
+		return itemState.SelectItemToDisplay(partID);
 	}
 
 	public boolean ApplyFilter() {

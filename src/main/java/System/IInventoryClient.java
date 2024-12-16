@@ -25,7 +25,7 @@ public interface IInventoryClient {
 	 * 
 	 * @param partID
 	 */
-	ItemModel[] ShowPart(int partID);
+	ArrayList<ItemModel> ShowPart(int partID);
 
 	boolean ApplyFilter();
 

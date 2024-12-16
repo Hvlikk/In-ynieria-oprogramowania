@@ -34,9 +34,8 @@ public class InventoryControler implements IInventoryClient {
 	 * 
 	 * @param partID
 	 */
-	public ItemModel[] ShowPart(int partID) {
-		// TODO - implement InventoryControler.ShowPart
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ShowPart(int partID) {
+		return itemService.ShowPart(partID);
 	}
 
 	public boolean ApplyFilter() {
