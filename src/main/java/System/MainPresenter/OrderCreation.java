@@ -5,7 +5,7 @@ import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
 public class OrderCreation {
 
-	CreateOrderContext orderContext;
+	CreateOrderContext orderContext = new CreateOrderContext();
 
 	/**
 	 * 

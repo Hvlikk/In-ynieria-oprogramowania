@@ -1,6 +1,12 @@
 package System.ViewLayer;
 
 import System.*;
+import System.MainPresenter.IOrderFacade;
+import System.MainPresenter.OrderFacade;
+import System.OrdersApiModel.OrdersApiModel.DeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
+import System.OrdersApiModel.OrdersApiModel.OrderModel;
 import System.StorageModel.StorageModel.ItemModel;
 import System.StoragePrezenter.StoragePrezenter.InventoryControler;
 
@@ -11,12 +17,17 @@ import java.util.Scanner;
 public class View {
 
 	private IInventoryClient inventoryClient = new InventoryControler();
+	private IOrderFacade orderFacade = new OrderFacade();
 	private ArrayList<ItemModel> backupMock = new ArrayList<>();
+	private IDeviceModel mockDeviceModel = new DeviceModel();
+	private IOrderModel mockOrderModel = new OrderModel();
+	private int mockWorkerId = 0;
+	private int mockClientId = 0;
 
 	public void ExecuteUseCases() throws IOException {
 		System.out.printf("\n\nWykonaj PU: \n");
-		System.out.printf("PU4 stworzenie zlecenia naprawy bez przypisania serwisanta:          a\n");
-		System.out.printf("PU4 stworzenie zlecenia naprawy z przypisaniem serwisanta:          aa\n");
+		System.out.printf("PU4 stworzenie zlecenia naprawy bez przypisania serwisanta:          PU4a\n");
+		System.out.printf("PU4 stworzenie zlecenia naprawy z przypisaniem serwisanta:          PU4b\n");
 		System.out.printf("PU21 przypisanie zlecenia serwisantowi:                              b\n");
 		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:                            c\n");
 		System.out.printf("Wykonaj PU: \n");
@@ -25,19 +36,18 @@ public class View {
 		System.out.printf("PU9: Aktualizacja stanu magazynu:                C\n");
 		System.out.printf("PU10: Przywrocenie ostatniej wersji magazynu:    D\n");
 		System.out.printf("PU1E: Naloz filtr:                               E\n");
-		System.out.printf("PU4 stworzenie zlecenia naprawy:                 e1\n");
-		System.out.printf("PU21 przypisanie zlecenia serwisantowi:          f1\n");
-		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:        g1\n");
 
 		Scanner myObj = new Scanner(System.in);
 
 		String result = myObj.nextLine();
 
 		switch (result) {
-			case "a": {
+			case "PU4a": {
+				orderFacade.CreateOrder(mockDeviceModel,mockOrderModel,mockWorkerId,mockClientId);
 				break;
 			}
-			case "aa": {
+			case "PU4b": {
+				orderFacade.CreateOrder(mockDeviceModel,mockOrderModel,-1,mockClientId);
 				break;
 			}
 			case "A": {

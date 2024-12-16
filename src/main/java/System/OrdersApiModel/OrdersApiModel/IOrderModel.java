@@ -8,4 +8,6 @@ public interface IOrderModel {
 
 	int GetWorkerId();
 
+	int GetId();
+
 }

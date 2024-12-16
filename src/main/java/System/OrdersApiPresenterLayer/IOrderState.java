@@ -2,7 +2,13 @@ package System.OrdersApiPresenterLayer;
 
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
+import java.sql.Connection;
+
 public interface IOrderState {
+
+	boolean Disconnect();
+
+	Connection Connect();
 
 	/**
 	 * 
@@ -33,5 +39,9 @@ public interface IOrderState {
 	 * @param id
 	 */
 	IOrderModel GetOrder(Integer id);
+
+    static IOrderState GetInstance() {
+        return null;
+    }
 
 }

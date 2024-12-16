@@ -6,9 +6,9 @@ import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public class OrderFacade implements IOrderFacade {
 
-	private OrderCreation OrderCreation;
-	private WorkerService workerService;
-	private OrderService orderService;
+	private OrderCreation orderCreation = new OrderCreation();
+	private WorkerService workerService = new WorkerService();
+	private OrderService orderService = new OrderService();
 
 	/**
 	 * 
@@ -18,8 +18,15 @@ public class OrderFacade implements IOrderFacade {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		// TODO - implement OrderFacade.CreateOrder
-		throw new UnsupportedOperationException();
+		if (workerId == -1) {
+			orderCreation.orderContext.SetStrategy(new CreateSimpleOrderStrategy());
+			System.out.println("Wybrano strategie bez pracownika\n");
+		}else {
+			orderCreation.orderContext.SetStrategy(new CreateOrderWithWorkerStrategy());
+			System.out.println("Wybrano strategie z pracownikiem\n");
+		}
+
+		return orderCreation.orderContext.CreateOrder(device,order,workerId,clientId);
 	}
 
 	/**

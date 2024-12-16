@@ -8,7 +8,7 @@ public interface IOrderCreation {
 	 * 
 	 * @param action
 	 */
-	boolean Handle(IAction action);
+	Action Handle(IAction action);
 
 	/**
 	 * 

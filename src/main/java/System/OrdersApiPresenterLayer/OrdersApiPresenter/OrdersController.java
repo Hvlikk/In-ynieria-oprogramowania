@@ -6,8 +6,8 @@ import System.OrdersApiPresenterLayer.IOrdersClient;
 
 public class OrdersController implements IOrdersClient {
 
-	private OrderRepairService orderRepairService;
-	private OrderService orderService;
+	private OrderRepairService orderRepairService = new OrderRepairService();
+	private OrderService orderService = new OrderService();
 
 	/**
 	 * 
@@ -17,8 +17,7 @@ public class OrdersController implements IOrdersClient {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		// TODO - implement OrdersController.CreateOrder
-		throw new UnsupportedOperationException();
+		return orderService.CreateOrder(device,order,workerId,clientId);
 	}
 
 	/**

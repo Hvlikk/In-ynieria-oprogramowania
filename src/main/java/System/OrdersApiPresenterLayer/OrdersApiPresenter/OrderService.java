@@ -1,7 +1,10 @@
 package System.OrdersApiPresenterLayer.OrdersApiPresenter;
 
+import System.MainPresenter.OrderCreation;
 import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
+import System.OrdersApiModel.OrdersApiModel.OrderState;
+import System.OrdersApiPresenterLayer.IOrderState;
 
 public class OrderService {
 
@@ -15,8 +18,17 @@ public class OrderService {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		// TODO - implement OrderService.CreateOrder
-		throw new UnsupportedOperationException();
+		Action action = new Action(ActionEnum.SetClient);
+
+		this.orderCreationChain = new CreateProcessor();
+
+		while (action.GetAction() != ActionEnum.Insert) {
+			action = orderCreationChain.Handle(action);
+		}
+
+		OrderState.getInstance().InsertOrder(order);
+
+		return order;
 	}
 
 	/**

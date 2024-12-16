@@ -8,6 +8,8 @@ public class OrderModel implements IOrderModel {
 	private int WorkerId;
 	private int[] RepairId;
 	private Date StartDate;
+	private int id;
+	private int workerId;
 
 	@Override
 	public OrderStatus GetStatus() {
@@ -21,6 +23,11 @@ public class OrderModel implements IOrderModel {
 
 	@Override
 	public int GetWorkerId() {
-		return 0;
+		return workerId;
+	}
+
+	@Override
+	public int GetId() {
+		return id;
 	}
 }
