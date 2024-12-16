@@ -1,6 +1,7 @@
 package System.OrdersApiPresenterLayer;
 
-import OrdersApiModel.OrdersApiModel.*;
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
 public interface IOrdersClient {
 
@@ -12,5 +13,17 @@ public interface IOrdersClient {
 	 * @param clientId
 	 */
 	IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId);
+
+	/**
+	 * 
+	 * @param id
+	 */
+	IOrderModel GetOrder(Integer id);
+
+	/**
+	 * 
+	 * @param order
+	 */
+	boolean ChangeOrder(IOrderModel order);
 
 }

@@ -1,6 +1,6 @@
 package System.OrdersApiPresenterLayer;
 
-import OrdersApiModel.OrdersApiModel.*;
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
 public interface IOrderState {
 
@@ -27,5 +27,11 @@ public interface IOrderState {
 	 * @param orderId
 	 */
 	IOrderModel DeleteOrder(int orderId);
+
+	/**
+	 * 
+	 * @param id
+	 */
+	IOrderModel GetOrder(Integer id);
 
 }

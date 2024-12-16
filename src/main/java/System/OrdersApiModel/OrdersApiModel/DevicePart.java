@@ -2,8 +2,8 @@ package System.OrdersApiModel.OrdersApiModel;
 
 public class DevicePart {
 
-	private string Mark;
-	private string SN;
+	private String Mark;
+	private String SN;
 	private boolean Broken;
 
 	public boolean IsBroken() {

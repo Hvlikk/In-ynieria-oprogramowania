@@ -1,6 +1,7 @@
 package System.OrdersApiPresenterLayer;
 
-import OrdersApiModel.OrdersApiModel.*;
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IRepairModel;
 
 public interface IRepairState {
 
@@ -17,13 +18,11 @@ public interface IRepairState {
 	int UpdateRepair(IRepairModel repair);
 
 	/**
-	 * 
 	 * @param deviceId
 	 */
 	IDeviceModel SelectDevice(int deviceId);
 
 	/**
-	 * 
 	 * @param repairId
 	 */
 	IRepairModel SelectRepair(int repairId);

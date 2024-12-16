@@ -1,6 +1,8 @@
 package System.MainPresenter;
 
-import WorkerApiModelLayer.WorkersApiModel.*;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkersApiPresenterLayer.IWorkersClient;
 
 public class WorkerService {
 

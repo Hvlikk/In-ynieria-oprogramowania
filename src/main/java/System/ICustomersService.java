@@ -1,9 +1,12 @@
-public interface ICustomersService {
+package System;
 
+import System.CustomerApi.CustomerApiModel.CustomerModel;
+
+public interface ICustomersService {
 	/**
 	 * 
 	 * @param customerId
 	 */
-	ICustomerModel GetCustomer(string customerId);
+	CustomerModel GetCustomer(String customerId);
 
 }

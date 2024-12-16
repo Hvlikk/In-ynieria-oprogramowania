@@ -1,5 +1,7 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+
 public class WorkerCreator {
 
 	/**
