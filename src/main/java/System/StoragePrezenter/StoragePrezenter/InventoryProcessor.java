@@ -13,9 +13,8 @@ public class InventoryProcessor {
 	 * 
 	 * @param partsList
 	 */
-	public ItemModel[] UpdateData(ItemModel[] partsList) {
-		// TODO - implement InventoryProcessor.UpdateData
-		throw new UnsupportedOperationException();
+	public boolean UpdateData(ArrayList<ItemModel> partsList) {
+		return itemState.UpdateItems(partsList);
 	}
 
 	/**

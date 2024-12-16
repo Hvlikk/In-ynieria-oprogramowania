@@ -9,7 +9,7 @@ public interface IItemState {
 	 * 
 	 * @param itemsToUpdate
 	 */
-	ItemModel[] UpdateItems(ItemModel[] itemsToUpdate);
+	boolean UpdateItems(ArrayList<ItemModel> itemsToUpdate);
 
 	ArrayList<ItemModel> DisplayAll();
 

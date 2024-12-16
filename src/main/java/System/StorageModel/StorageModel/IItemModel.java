@@ -16,14 +16,14 @@ public interface IItemModel {
 
 	/**
 	 * 
-	 * @param item
+	 * @param partID
 	 */
-	boolean SetPartID(ItemModel item);
+	void SetPartID(int partID);
 
 	/**
 	 * 
-	 * @param item
+	 * @param quantity
 	 */
-	boolean SetQuantity(ItemModel item);
+	void SetQuantity(int quantity);
 
 }

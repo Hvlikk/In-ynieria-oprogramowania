@@ -13,9 +13,8 @@ public class ItemService {
 	 * 
 	 * @param partsList
 	 */
-	public ItemModel[] UpdateData(ItemModel[] partsList) {
-		// TODO - implement ItemService.UpdateData
-		throw new UnsupportedOperationException();
+	public boolean UpdateData(ArrayList<ItemModel> partsList) {
+		return invProcessor.UpdateData(partsList);
 	}
 
 	/**

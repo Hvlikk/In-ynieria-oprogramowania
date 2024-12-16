@@ -38,9 +38,37 @@ public class ItemState implements IItemState {
 	 * 
 	 * @param itemsToUpdate
 	 */
-	public ItemModel[] UpdateItems(ItemModel[] itemsToUpdate) {
-		// TODO - implement ItemState.UpdateItems
-		throw new UnsupportedOperationException();
+	public boolean UpdateItems(ArrayList<ItemModel> itemsToUpdate) {
+		boolean updated = true;
+		boolean partListFound = false;
+		int updateID, dbID, insertID, insertQuant;
+		try {
+			for (int i = 0; i < itemsToUpdate.size(); i++) {
+				for (int j = 0; j < itemList.size(); j++) {
+					updateID = itemsToUpdate.get(i).GetPartID(itemsToUpdate.get(i));
+					dbID = itemList.get(j).GetPartID(itemList.get(j));
+
+					if (updateID == dbID){
+						itemList.get(j).SetQuantity(itemsToUpdate.get(i).GetQuantity(itemList.get(i)));
+						partListFound = true;
+					}
+
+					if (partListFound)
+						break;
+				}
+
+				if (partListFound == false){
+					insertID = itemsToUpdate.get(i).GetPartID(itemsToUpdate.get(i));
+					insertQuant = itemsToUpdate.get(i).GetQuantity(itemsToUpdate.get(i));
+					itemList.add(CreateItem(insertID, insertQuant));
+				}
+
+				partListFound = false;
+			}
+		} catch (Exception ex) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -65,9 +93,8 @@ public class ItemState implements IItemState {
 	 * @param partID
 	 * @param quantity
 	 */
-	public boolean CreateItem(int partID, int quantity) {
-		// TODO - implement ItemState.CreateItem
-		throw new UnsupportedOperationException();
+	public ItemModel CreateItem(int partID, int quantity) {
+		return new ItemModel(partID, quantity);
 	}
 
 	public ItemModel[] FilterData() {
