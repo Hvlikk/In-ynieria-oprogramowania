@@ -24,9 +24,8 @@ public class PresentInventory {
 		return itemState.SelectItemToDisplay(partID);
 	}
 
-	public boolean ApplyFilter() {
-		// TODO - implement PresentInventory.ApplyFilter
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ApplyFilter() {
+		return itemState.FilterData();
 	}
 
 	private void PrepareInventoryStateToDisplay() {

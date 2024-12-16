@@ -1,6 +1,7 @@
 package System.StorageModel.StorageModel;
 import System.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ItemState implements IItemState {
 
@@ -98,8 +99,65 @@ public class ItemState implements IItemState {
 	}
 
 	public ArrayList<ItemModel> FilterData() {
-		// TODO - implement ItemState.FilterData
-		throw new UnsupportedOperationException();
+		ArrayList<ItemModel> filteredItems = new ArrayList<>();
+		int chosenFilter, filterNumber, XD;
+		System.out.printf("partID > partIDFilter         | 1\n");
+		System.out.printf("partID < partIDFilter         | 2\n");
+		System.out.printf("quantity > quantityFilter     | 3\n");
+		System.out.printf("quantity < quantityFilter     | 4\n");
+		Scanner scanner = new Scanner(System.in);
+		System.out.printf("Wybierz filtr: \n");
+		chosenFilter = scanner.nextInt();
+		System.out.printf("Podaj wartosc filtra: \n");
+		filterNumber = scanner.nextInt();
+
+		switch (chosenFilter){
+			case 1: {
+				for (int i = 0; i < itemList.size(); i++){
+					XD = itemList.get(i).GetPartID(itemList.get(i));
+
+					if (XD > filterNumber)
+						filteredItems.add(itemList.get(i));
+				}
+				break;
+			}
+			case 2:{
+
+				for (int i = 0; i < itemList.size(); i++){
+					XD = itemList.get(i).GetPartID(itemList.get(i));
+
+					if (XD < filterNumber)
+						filteredItems.add(itemList.get(i));
+				}
+				break;
+			}
+
+			case 3: {
+				for (int i = 0; i < itemList.size(); i++){
+					XD = itemList.get(i).GetQuantity(itemList.get(i));
+
+					if (XD > filterNumber)
+						filteredItems.add(itemList.get(i));
+				}
+				break;
+			}
+
+			case 4: {
+				for (int i = 0; i < itemList.size(); i++){
+					XD = itemList.get(i).GetQuantity(itemList.get(i));
+
+					if (XD < filterNumber)
+						filteredItems.add(itemList.get(i));
+				}
+				break;
+			}
+
+			default:
+				break;
+		}
+
+		return filteredItems;
+
 	}
 
 	public ArrayList<ItemModel> DisplayAll() {

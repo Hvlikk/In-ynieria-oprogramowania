@@ -38,9 +38,8 @@ public class ItemService {
 		return presentInventory.ShowPart(partID);
 	}
 
-	public boolean ApplyFilter() {
-		// TODO - implement ItemService.ApplyFilter
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ApplyFilter() {
+		return presentInventory.ApplyFilter();
 	}
 
 }
