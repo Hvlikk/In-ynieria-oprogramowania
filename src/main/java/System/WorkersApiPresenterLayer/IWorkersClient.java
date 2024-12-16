@@ -1,6 +1,7 @@
 package System.WorkersApiPresenterLayer;
 
-import WorkerApiModelLayer.WorkersApiModel.*;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public interface IWorkersClient {
 
@@ -8,7 +9,7 @@ public interface IWorkersClient {
 	 * 
 	 * @param worker
 	 */
-	WorkersApi.IWorkerModel CreateNewWorker(IWorkerModel worker);
+	IWorkerModel CreateNewWorker(IWorkerModel worker);
 
 	/**
 	 * 

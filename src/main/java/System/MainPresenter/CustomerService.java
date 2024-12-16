@@ -1,7 +1,7 @@
 package System.MainPresenter;
 
-import CustomerApi.*;
-import CustomerApi.CustomerApiModel.*;
+import System.CustomerApi.CustomerApiModel.CustomerModel;
+import System.CustomerApi.ICustomerClient;
 
 public class CustomerService {
 

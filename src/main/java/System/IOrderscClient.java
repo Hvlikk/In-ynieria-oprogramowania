@@ -1,3 +1,7 @@
+package System;
+
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
+
 public interface IOrderscClient {
 
 	/**

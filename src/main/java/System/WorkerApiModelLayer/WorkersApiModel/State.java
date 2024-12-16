@@ -1,9 +1,11 @@
 package System.WorkerApiModelLayer.WorkersApiModel;
 
+import java.sql.Connection;
+
 public interface State {
 
 	Connection Connect();
 
-	bool Disconnect();
+	boolean Disconnect();
 
 }

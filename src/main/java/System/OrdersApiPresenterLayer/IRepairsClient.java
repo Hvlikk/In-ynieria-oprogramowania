@@ -1,5 +1,7 @@
 package System.OrdersApiPresenterLayer;
 
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+
 public interface IRepairsClient {
 
 	/**

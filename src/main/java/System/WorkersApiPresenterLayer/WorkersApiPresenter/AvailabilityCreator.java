@@ -1,5 +1,7 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+
 public class AvailabilityCreator {
 
 	public IAvailabilityModel CreateNewAvailability() {

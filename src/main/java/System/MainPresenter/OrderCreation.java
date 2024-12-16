@@ -1,6 +1,7 @@
 package System.MainPresenter;
 
-import OrdersApiModel.OrdersApiModel.*;
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
 public class OrderCreation {
 

@@ -1,8 +1,13 @@
 package System.MainPresenter;
 
-public class WorkerFacade implements IOrderFacade {
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+
+public class WorkerFacade implements IWorkerFacade {
 
 	private WorkerService workerService;
+
+
 
 	/**
 	 * 
@@ -18,6 +23,7 @@ public class WorkerFacade implements IOrderFacade {
 	 * @param worek
 	 * @param availability
 	 */
+	@Override
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
 		// TODO - implement WorkerFacade.ChangeAvailability
 		throw new UnsupportedOperationException();

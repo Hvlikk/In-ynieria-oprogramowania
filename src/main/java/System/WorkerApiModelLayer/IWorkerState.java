@@ -1,6 +1,6 @@
 package System.WorkerApiModelLayer;
 
-import WorkerApiModelLayer.WorkersApiModel.*;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public interface IWorkerState {
 

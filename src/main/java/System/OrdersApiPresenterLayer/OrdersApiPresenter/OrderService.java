@@ -1,6 +1,7 @@
 package System.OrdersApiPresenterLayer.OrdersApiPresenter;
 
-import OrdersApiModel.OrdersApiModel.*;
+import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
+import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 
 public class OrderService {
 
@@ -24,6 +25,15 @@ public class OrderService {
 	 */
 	public int UpdateOrder(IOrderModel order) {
 		// TODO - implement OrderService.UpdateOrder
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param id
+	 */
+	public IOrderModel GetOrder(Integer id) {
+		// TODO - implement OrderService.GetOrder
 		throw new UnsupportedOperationException();
 	}
 

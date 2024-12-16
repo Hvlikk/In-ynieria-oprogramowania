@@ -1,4 +1,8 @@
-import WorkerApiModelLayer.WorkersApiModel.*;
+package System;
+
+
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public interface IWorkersClient {
 

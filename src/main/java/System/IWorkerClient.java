@@ -1,3 +1,8 @@
+package System;
+
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+
 public interface IWorkerClient {
 
 	/**
@@ -11,6 +16,6 @@ public interface IWorkerClient {
 	 * @param workerId
 	 * @param availability
 	 */
-	bool UpdateWorkerAvailability(int workerId, IAvailabilityModel availability);
+	boolean UpdateWorkerAvailability(int workerId, IAvailabilityModel availability);
 
 }

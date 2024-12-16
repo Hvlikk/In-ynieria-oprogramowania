@@ -1,7 +1,8 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
-import WorkersApiPresenterLayer.*;
-import WorkerApiModelLayer.WorkersApiModel.*;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkersApiPresenterLayer.IWorkersClient;
 
 public class WorkersController implements IWorkersClient {
 
@@ -12,7 +13,7 @@ public class WorkersController implements IWorkersClient {
 	 * 
 	 * @param worker
 	 */
-	public WorkersApi.IWorkerModel CreateNewWorker(IWorkerModel worker) {
+	public IWorkerModel CreateNewWorker(IWorkerModel worker) {
 		// TODO - implement WorkersController.CreateNewWorker
 		throw new UnsupportedOperationException();
 	}
@@ -22,6 +23,7 @@ public class WorkersController implements IWorkersClient {
 	 * @param worek
 	 * @param availability
 	 */
+	@Override
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
 		// TODO - implement WorkersController.ChangeAvailability
 		throw new UnsupportedOperationException();

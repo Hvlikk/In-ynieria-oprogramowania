@@ -1,12 +1,12 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
-import WorkersApi.*;
-import WorkerApiModelLayer.WorkersApiModel.*;
+import System.WorkerApiModelLayer.IAvailabilityState;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
 
 public class AvailabilityService {
 
 	private AvailabilityCreator AvailabilityCreator;
-	private IAvailabilityStatee AvailabilityState;
+	private IAvailabilityState AvailabilityState;
 
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class AvailabilityService {
 	 * @param WorkerId
 	 * @param availability
 	 */
-	public boolean ChangeAvailability(integer WorkerId, IAvailabilityModel availability) {
+	public boolean ChangeAvailability(int WorkerId, IAvailabilityModel availability) {
 		// TODO - implement AvailabilityService.ChangeAvailability
 		throw new UnsupportedOperationException();
 	}
