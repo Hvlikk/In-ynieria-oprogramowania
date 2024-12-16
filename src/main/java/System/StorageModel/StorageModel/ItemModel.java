@@ -15,7 +15,7 @@ public class ItemModel implements IItemModel {
 	 * @param item
 	 */
 	public int GetPartID(ItemModel item) {
-		return item.partID;
+		return this.partID;
 	}
 
 	/**
@@ -23,25 +23,23 @@ public class ItemModel implements IItemModel {
 	 * @param item
 	 */
 	public int GetQuantity(ItemModel item) {
-		return item.quantity;
+		return this.quantity;
 	}
 
 	/**
 	 * 
-	 * @param item
+	 * @param partID
 	 */
-	public boolean SetPartID(ItemModel item) {
-		// TODO - implement ItemModel.SetPartID
-		throw new UnsupportedOperationException();
+	public void SetPartID(int partID) {
+		this.partID = partID;
 	}
 
 	/**
 	 * 
-	 * @param item
+	 * @param quantity
 	 */
-	public boolean SetQuantity(ItemModel item) {
-		// TODO - implement ItemModel.SetQuantity
-		throw new UnsupportedOperationException();
+	public void SetQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

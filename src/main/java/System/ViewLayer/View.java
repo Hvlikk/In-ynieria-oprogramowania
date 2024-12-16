@@ -66,6 +66,7 @@ public class View {
 				break;
 			}
 			case "B":{
+				System.out.println("Podaj part ID czesci, ktora chcesz wyswietlic!");
 				ArrayList<ItemModel> items = new ArrayList<>();
 				int selectedPartID = myObj.nextInt();
 				items = inventoryClient.ShowPart(selectedPartID);
@@ -83,7 +84,39 @@ public class View {
 				break;
 			}
 			case "C": {
+				boolean isAppending = true;
+				boolean isOk;
+				ArrayList<ItemModel> items = new ArrayList<>();
+				int partID, quant;
+				String choice;
 
+				System.out.println("TRYB WPROWADZANIA DANYCH!");
+				while (isAppending) {
+					System.out.print("Podaj partID: ");
+					partID = myObj.nextInt();
+
+					System.out.print("Podaj ilosc: ");
+					quant = myObj.nextInt();
+
+					items.add(new ItemModel(partID, quant));
+
+					// Oczyszczenie bufora przed użyciem nextLine()
+					myObj.nextLine();
+
+					System.out.print("Czy wprowadzasz dalej? Y/N: ");
+					choice = myObj.nextLine().trim(); // trim() usunie białe znaki, np. spacje
+
+					if (choice.equalsIgnoreCase("N")) { // użyj equalsIgnoreCase dla porównania
+						isAppending = false;
+					}
+				}
+
+				isOk = inventoryClient.UpdateData(items);
+				if (isOk)
+					System.out.println("Update wykonany poprawnie!");
+				else
+					System.out.println("Blad w wykonywaniu update!");
+				break;
 			}
 			case "D": {
 				createBackupMock();

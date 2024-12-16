@@ -11,7 +11,7 @@ public interface IInventoryClient {
 	 * 
 	 * @param partsList
 	 */
-	ItemModel[] UpdateData(ItemModel[] partsList);
+	boolean UpdateData(ArrayList<ItemModel> partsList);
 
 	/**
 	 * 

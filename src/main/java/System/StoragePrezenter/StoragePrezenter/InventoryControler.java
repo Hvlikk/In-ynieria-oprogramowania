@@ -12,9 +12,8 @@ public class InventoryControler implements IInventoryClient {
 	 * 
 	 * @param partsList
 	 */
-	public ItemModel[] UpdateData(ItemModel[] partsList) {
-		// TODO - implement InventoryControler.UpdateData
-		throw new UnsupportedOperationException();
+	public boolean UpdateData(ArrayList<ItemModel> partsList) {
+		return itemService.UpdateData(partsList);
 	}
 
 	/**
