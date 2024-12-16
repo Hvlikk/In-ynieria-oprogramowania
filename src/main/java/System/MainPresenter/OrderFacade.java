@@ -2,7 +2,9 @@ package System.MainPresenter;
 
 import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
+import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityModel;
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkerApiModelLayer.WorkersApiModel.WorkerModel;
 
 public class OrderFacade implements IOrderFacade {
 
@@ -36,8 +38,16 @@ public class OrderFacade implements IOrderFacade {
 	 */
 	@Override
 	public boolean ChangeWorkerForOrder(IWorkerModel worker, IOrderModel order) {
-		// TODO - implement OrderFacade.ChangeWorkerForOrder
-		throw new UnsupportedOperationException();
+		IWorkerModel model = workerService.GetWorker(worker.GetId());
+
+		if (model.IsBusy())
+			return false;
+
+		AvailabilityModel availabilityModel = new AvailabilityModel();
+		if (!workerService.ChangeAvailability(model,availabilityModel))
+			return false;
+
+		return orderService.ChangeOrder(order);
 	}
 
 }

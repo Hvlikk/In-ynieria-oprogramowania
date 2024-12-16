@@ -36,8 +36,12 @@ public class OrderService {
 	 * @param order
 	 */
 	public int UpdateOrder(IOrderModel order) {
-		// TODO - implement OrderService.UpdateOrder
-		throw new UnsupportedOperationException();
+		IAction action = new Action(ActionEnum.SetWorker);
+		this.orderCreationChain = new UpdateProcessor();
+
+		orderCreationChain.Handle(action);
+
+		return OrderState.getInstance().UpdateOrder(order);
 	}
 
 	/**

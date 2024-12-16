@@ -2,13 +2,19 @@ package System.ViewLayer;
 
 import System.*;
 import System.MainPresenter.IOrderFacade;
+import System.MainPresenter.IWorkerFacade;
 import System.MainPresenter.OrderFacade;
+import System.MainPresenter.WorkerFacade;
 import System.OrdersApiModel.OrdersApiModel.DeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 import System.OrdersApiModel.OrdersApiModel.OrderModel;
 import System.StorageModel.StorageModel.ItemModel;
 import System.StoragePrezenter.StoragePrezenter.InventoryControler;
+import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkerApiModelLayer.WorkersApiModel.WorkerModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,9 +24,14 @@ public class View {
 
 	private IInventoryClient inventoryClient = new InventoryControler();
 	private IOrderFacade orderFacade = new OrderFacade();
+	private IWorkerFacade workerFacade = new WorkerFacade();
+
 	private ArrayList<ItemModel> backupMock = new ArrayList<>();
 	private IDeviceModel mockDeviceModel = new DeviceModel();
 	private IOrderModel mockOrderModel = new OrderModel();
+	private IAvailabilityModel mockAvailabilityModel = new AvailabilityModel();
+	private IWorkerModel mockWorkerModel = new WorkerModel();
+
 	private int mockWorkerId = 0;
 	private int mockClientId = 0;
 
@@ -28,8 +39,8 @@ public class View {
 		System.out.printf("\n\nWykonaj PU: \n");
 		System.out.printf("PU4 stworzenie zlecenia naprawy bez przypisania serwisanta:          PU4a\n");
 		System.out.printf("PU4 stworzenie zlecenia naprawy z przypisaniem serwisanta:          PU4b\n");
-		System.out.printf("PU21 przypisanie zlecenia serwisantowi:                              b\n");
-		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:                            c\n");
+		System.out.printf("PU21 przypisanie zlecenia serwisantowi:                              PU21\n");
+		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:                            PU20\n");
 		System.out.printf("Wykonaj PU: \n");
 		System.out.printf("PU1: Podglad stanu calego magazynu:              A\n");
 		System.out.printf("PU2: Podglad stanu magazynowego wybranej czesci: B\n");
@@ -48,6 +59,14 @@ public class View {
 			}
 			case "PU4b": {
 				orderFacade.CreateOrder(mockDeviceModel,mockOrderModel,-1,mockClientId);
+				break;
+			}
+			case "PU20": {
+				workerFacade.ChangeAvailability(mockWorkerModel,mockAvailabilityModel);
+				break;
+			}
+			case "PU21": {
+				orderFacade.ChangeWorkerForOrder(mockWorkerModel,mockOrderModel);
 				break;
 			}
 			case "A": {

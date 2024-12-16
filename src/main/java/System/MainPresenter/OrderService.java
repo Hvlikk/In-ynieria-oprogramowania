@@ -35,8 +35,8 @@ public class OrderService {
 	 * @param order
 	 */
 	public boolean ChangeOrder(IOrderModel order) {
-		// TODO - implement OrderService.ChangeOrder
-		throw new UnsupportedOperationException();
+		System.out.println("Success call to OrderApi");
+		return client.ChangeOrder(order);
 	}
 
 }

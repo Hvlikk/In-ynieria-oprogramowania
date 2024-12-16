@@ -5,7 +5,7 @@ import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public class WorkerFacade implements IWorkerFacade {
 
-	private WorkerService workerService;
+	private WorkerService workerService = new WorkerService();
 
 
 
@@ -25,8 +25,7 @@ public class WorkerFacade implements IWorkerFacade {
 	 */
 	@Override
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
-		// TODO - implement WorkerFacade.ChangeAvailability
-		throw new UnsupportedOperationException();
+		return workerService.ChangeAvailability(worek,availability);
 	}
 
 }

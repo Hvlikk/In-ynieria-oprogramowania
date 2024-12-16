@@ -34,8 +34,7 @@ public class OrdersController implements IOrdersClient {
 	 * @param order
 	 */
 	public boolean ChangeOrder(IOrderModel order) {
-		// TODO - implement OrdersController.ChangeOrder
-		throw new UnsupportedOperationException();
+		return orderService.UpdateOrder(order) > -1;
 	}
 
 }
