@@ -97,7 +97,7 @@ public class ItemState implements IItemState {
 		return new ItemModel(partID, quantity);
 	}
 
-	public ItemModel[] FilterData() {
+	public ArrayList<ItemModel> FilterData() {
 		// TODO - implement ItemState.FilterData
 		throw new UnsupportedOperationException();
 	}

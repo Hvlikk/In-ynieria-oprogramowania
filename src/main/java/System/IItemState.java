@@ -19,7 +19,7 @@ public interface IItemState {
 	 */
 	boolean RecoverBackup(ArrayList<ItemModel> backup);
 
-	ItemModel[] FilterData();
+	ArrayList<ItemModel> FilterData();
 
 	/**
 	 * 
