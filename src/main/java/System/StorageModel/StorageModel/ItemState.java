@@ -1,9 +1,12 @@
 package System.StorageModel.StorageModel;
+import System.*;
+import java.util.ArrayList;
 
 public class ItemState implements IItemState {
 
-	private ArrayList<ItemModel> itemLIst;
+	private ArrayList<ItemModel> itemList = new ArrayList<>();
 	private static ItemState instance;
+	private int uniqueID = 0;
 
 	/**
 	 * 
@@ -14,9 +17,13 @@ public class ItemState implements IItemState {
 		throw new UnsupportedOperationException();
 	}
 
-	public ItemState getInstance() {
-		return this.instance;
+	public static ItemState getInstance() {
+		if (instance == null) {
+			instance = new ItemState();
+		}
+		return instance;
 	}
+
 
 	/**
 	 * 
@@ -31,9 +38,17 @@ public class ItemState implements IItemState {
 	 * 
 	 * @param backup
 	 */
-	public boolean RecoverBackup(ItemModel[] backup) {
-		// TODO - implement ItemState.RecoverBackup
-		throw new UnsupportedOperationException();
+	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
+		try {
+			itemList = backup;
+			for (int i = 0; i < itemList.size(); i++)
+			{
+				System.out.println("ID" + itemList.get(i).GetPartID(itemList.get(i)) + "Quant" + itemList.get(i).GetQuantity(itemList.get(i)));
+			}
+			return true;
+		} catch (Exception ex){
+			return false;
+		}
 	}
 
 	/**
@@ -51,9 +66,13 @@ public class ItemState implements IItemState {
 		throw new UnsupportedOperationException();
 	}
 
-	public ItemModel[] DisplayAll() {
-		// TODO - implement ItemState.DisplayAll
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> DisplayAll() {
+//		itemList.add(new ItemModel(1,1));
+//		itemList.add(new ItemModel(2,1));
+//		itemList.add(new ItemModel(3,1));
+//		itemList.add(new ItemModel(4,1));
+		return itemList;
+		//throw new UnsupportedOperationException();
 	}
 
 	/**

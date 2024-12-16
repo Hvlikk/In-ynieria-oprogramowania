@@ -1,10 +1,12 @@
+package System;
+
 public interface IReplenishmentState {
 
 	/**
 	 * 
 	 * @param order
 	 */
-	boolean InsertOrder(IIReplenishmentModel order);
+	boolean InsertOrder(IReplenishment order);
 
 	/**
 	 * 

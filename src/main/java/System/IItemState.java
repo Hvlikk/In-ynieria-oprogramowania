@@ -1,4 +1,7 @@
-import StorageModel.StorageModel.*;
+package System;
+import System.StorageModel.StorageModel.*;
+
+import java.util.ArrayList;
 
 public interface IItemState {
 
@@ -8,17 +11,13 @@ public interface IItemState {
 	 */
 	ItemModel[] UpdateItems(ItemModel[] itemsToUpdate);
 
-	ItemModel[] DisplayAll();
+	ArrayList<ItemModel> DisplayAll();
 
 	/**
 	 * 
 	 * @param backup
 	 */
-	boolean RecoverBackup(ItemModel[] backup);
-
-	void operation();
-
-	void operation2();
+	boolean RecoverBackup(ArrayList<ItemModel> backup);
 
 	ItemModel[] FilterData();
 

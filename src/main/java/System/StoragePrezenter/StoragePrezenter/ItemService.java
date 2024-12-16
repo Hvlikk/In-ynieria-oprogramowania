@@ -1,11 +1,13 @@
 package System.StoragePrezenter.StoragePrezenter;
 
-import StorageModel.StorageModel.*;
+import System.StorageModel.StorageModel.*;
+
+import java.util.ArrayList;
 
 public class ItemService {
 
-	private InventoryProcessor invProcessor;
-	private PresentInventory presentInventory;
+	private InventoryProcessor invProcessor = new InventoryProcessor();
+	private PresentInventory presentInventory = new PresentInventory();
 
 	/**
 	 * 
@@ -20,14 +22,13 @@ public class ItemService {
 	 * 
 	 * @param backup
 	 */
-	public boolean RecoverBackup(ItemModel[] backup) {
-		// TODO - implement ItemService.RecoverBackup
-		throw new UnsupportedOperationException();
+	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
+		return invProcessor.RecoverBackup(backup);
 	}
 
-	public ItemModel[] ShowAll() {
-		// TODO - implement ItemService.ShowAll
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ShowAll() {
+		return presentInventory.ShowAll();
+		//throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -1,4 +1,9 @@
-import StorageModel.StorageModel.*;
+package System;
+
+import System.StorageModel.StorageModel.*;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public interface IInventoryClient {
 
@@ -12,9 +17,9 @@ public interface IInventoryClient {
 	 * 
 	 * @param backup
 	 */
-	boolean RecoverBackup(ItemModel[] backup);
+	boolean RecoverBackup(ArrayList<ItemModel> backup);
 
-	ItemModel[] ShowAll();
+	ArrayList<ItemModel> ShowAll();
 
 	/**
 	 * 

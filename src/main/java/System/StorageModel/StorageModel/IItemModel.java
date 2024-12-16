@@ -18,12 +18,12 @@ public interface IItemModel {
 	 * 
 	 * @param item
 	 */
-	bool SetPartID(ItemModel item);
+	boolean SetPartID(ItemModel item);
 
 	/**
 	 * 
 	 * @param item
 	 */
-	bool SetQuantity(ItemModel item);
+	boolean SetQuantity(ItemModel item);
 
 }

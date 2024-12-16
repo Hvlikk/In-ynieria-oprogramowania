@@ -1,14 +1,19 @@
 package System.StoragePrezenter.StoragePrezenter;
 
-import StorageModel.StorageModel.*;
+import System.StorageModel.StorageModel.*;
+import System.IItemState;
+
+import java.util.ArrayList;
 
 public class PresentInventory {
 
-	private IItemState itemState;
+	private IItemState itemState = ItemState.getInstance();
 
-	public ItemModel[] ShowAll() {
-		// TODO - implement PresentInventory.ShowAll
-		throw new UnsupportedOperationException();
+
+	public ArrayList<ItemModel> ShowAll() {
+		return itemState.DisplayAll();
+
+		//throw new UnsupportedOperationException();
 	}
 
 	/**

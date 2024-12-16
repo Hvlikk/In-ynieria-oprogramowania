@@ -1,10 +1,13 @@
 package System.StoragePrezenter.StoragePrezenter;
 
-import StorageModel.StorageModel.*;
+import System.StorageModel.StorageModel.*;
+import System.IItemState;
+
+import java.util.ArrayList;
 
 public class InventoryProcessor {
 
-	private IItemState itemState;
+	private IItemState itemState = ItemState.getInstance();
 
 	/**
 	 * 
@@ -19,9 +22,9 @@ public class InventoryProcessor {
 	 * 
 	 * @param backup
 	 */
-	public boolean RecoverBackup(ItemModel[] backup) {
-		// TODO - implement InventoryProcessor.RecoverBackup
-		throw new UnsupportedOperationException();
+	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
+
+		return itemState.RecoverBackup(backup);
 	}
 
 	private void PrepareDataToUpdate() {

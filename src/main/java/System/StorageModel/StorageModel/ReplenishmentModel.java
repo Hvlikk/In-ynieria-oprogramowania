@@ -1,7 +1,16 @@
 package System.StorageModel.StorageModel;
-
-public class ReplenishmentModel implements IReplenishmentModel {
+import System.IReplenishment;
+public class ReplenishmentModel implements IReplenishment {
 
 	private int orderID;
 
+	@Override
+	public void CreateReplenishmentOrder() {
+
+	}
+
+	@Override
+	public void DeleteReplenishmentOrder() {
+
+	}
 }
