@@ -37,9 +37,8 @@ public class InventoryControler implements IInventoryClient {
 		return itemService.ShowPart(partID);
 	}
 
-	public boolean ApplyFilter() {
-		// TODO - implement InventoryControler.ApplyFilter
-		throw new UnsupportedOperationException();
+	public ArrayList<ItemModel> ApplyFilter() {
+		return itemService.ApplyFilter();
 	}
 
 	public void CreateReplenishmentOrder() {

@@ -128,7 +128,13 @@ public class View {
 				}
 				break;
 			}
-			case "c": {
+			case "E": {
+				ArrayList<ItemModel> filteredItems = new ArrayList<>();
+				filteredItems = inventoryClient.ApplyFilter();
+				System.out.println("Odfiltrowane przedmioty: ");
+				for(int i = 0 ; i < filteredItems.size(); i++){
+					System.out.println("Part ID: " + filteredItems.get(i).GetPartID(filteredItems.get(i)) + " Quantity : " + filteredItems.get(i).GetQuantity(filteredItems.get(i)));
+				}
 				break;
 			}
 			case "d":{
