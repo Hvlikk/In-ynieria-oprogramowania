@@ -3,18 +3,18 @@ package System.MainPresenter;
 import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 import System.WorkersApiPresenterLayer.IWorkersClient;
+import System.WorkersApiPresenterLayer.WorkersApiPresenter.WorkersController;
 
 public class WorkerService {
 
-	private IWorkersClient client;
+	private IWorkersClient client = new WorkersController();
 
 	/**
 	 * 
 	 * @param workerId
 	 */
 	public IWorkerModel GetWorker(int workerId) {
-		// TODO - implement WorkerService.GetWorker
-		throw new UnsupportedOperationException();
+		return client.GetWorker(workerId);
 	}
 
 	/**
@@ -23,8 +23,7 @@ public class WorkerService {
 	 * @param availability
 	 */
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
-		// TODO - implement WorkerService.ChangeAvailability
-		throw new UnsupportedOperationException();
+		return client.ChangeAvailability(worek,availability);
 	}
 
 }

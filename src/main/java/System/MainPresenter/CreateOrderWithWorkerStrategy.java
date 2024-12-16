@@ -1,15 +1,18 @@
 package System.MainPresenter;
 
+import System.CustomerApi.CustomerApiModel.CustomerModel;
 import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
+import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityModel;
 import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
 
 public class CreateOrderWithWorkerStrategy implements ICreateOrderStrategy {
 
-	private CustomerService customerService;
-	private RepairService repairService;
-	private OrderService orderService;
+	private CustomerService customerService = new CustomerService();
+	private RepairService repairService = new RepairService();
+	private OrderService orderService = new OrderService();
+	private WorkerService workerService = new WorkerService();
 
 	/**
 	 * 
@@ -49,6 +52,20 @@ public class CreateOrderWithWorkerStrategy implements ICreateOrderStrategy {
 
 	@Override
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		return null;
+		IWorkerModel worker = workerService.GetWorker(workerId);
+
+		if (worker.IsBusy())
+			return null;
+
+		AvailabilityModel availabilityModel = new AvailabilityModel();
+		workerService.ChangeAvailability(worker,availabilityModel);
+
+		CustomerModel customerModel = customerService.GetCustomer(clientId);
+
+		if (customerModel == null)
+			return null;
+
+		CustomerModel customer = customerService.GetCustomer(clientId);
+		return orderService.CreateOrder(device,order,worker.GetId(),customer.getId());
 	}
 }

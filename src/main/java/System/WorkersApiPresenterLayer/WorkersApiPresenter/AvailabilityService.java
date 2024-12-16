@@ -1,20 +1,24 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
-import System.WorkerApiModelLayer.IAvailabilityState;
+import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityState;
 import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
 
 public class AvailabilityService {
 
-	private AvailabilityCreator AvailabilityCreator;
-	private IAvailabilityState AvailabilityState;
+	private AvailabilityCreator availabilityCreator = new AvailabilityCreator();
 
 	/**
 	 * 
-	 * @param IAvailabilityModel
+	 * @param id
 	 */
-	private IAvailabilityModel CreateNewAvailability(int IAvailabilityModel) {
-		// TODO - implement AvailabilityService.CreateNewAvailability
-		throw new UnsupportedOperationException();
+	private IAvailabilityModel CreateNewAvailability(int id) {
+		IAvailabilityModel model = availabilityCreator.CreateNewAvailability();
+		model.SetId(id);
+
+		if (AvailabilityState.getInstance().InsertAvailability(model))
+			return model;
+
+		return null;
 	}
 
 	/**
@@ -23,8 +27,11 @@ public class AvailabilityService {
 	 * @param availability
 	 */
 	public boolean ChangeAvailability(int WorkerId, IAvailabilityModel availability) {
-		// TODO - implement AvailabilityService.ChangeAvailability
-		throw new UnsupportedOperationException();
+		int result = AvailabilityState.getInstance().UpdateAvailability(availability);
+		if (result > -1)
+			return true;
+
+		return false;
 	}
 
 }

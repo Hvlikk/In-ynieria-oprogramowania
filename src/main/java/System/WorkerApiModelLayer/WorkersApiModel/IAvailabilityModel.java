@@ -12,4 +12,8 @@ public interface IAvailabilityModel {
 
 	Availability GetType();
 
+	int GetId();
+
+	void SetId(int id);
+
 }

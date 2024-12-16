@@ -1,12 +1,15 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
+import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityModel;
+import System.WorkerApiModelLayer.WorkersApiModel.IAvailabilityModel;
+
 public interface IAvailabilityProvider {
 
 	/**
 	 * 
 	 * @param WorkerId
-	 * @param IAvailabilityModel
+	 * @param model
 	 */
-	boolean ChangeAvailability(int WorkerId, int IAvailabilityModel);
+	boolean ChangeAvailability(int WorkerId, IAvailabilityModel model);
 
 }

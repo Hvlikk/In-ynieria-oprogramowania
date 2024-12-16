@@ -1,16 +1,18 @@
 package System.WorkersApiPresenterLayer.WorkersApiPresenter;
 
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkerApiModelLayer.WorkersApiModel.WorkerState;
 
 public class WorkerCreator {
 
 	/**
 	 * 
-	 * @param IWorkerModel
+	 * @param model
 	 */
-	public IWorkerModel CreateNewWorker(int IWorkerModel) {
-		// TODO - implement WorkerCreator.CreateNewWorker
-		throw new UnsupportedOperationException();
+	public IWorkerModel CreateNewWorker(IWorkerModel model) {
+		if (WorkerState.getInstance().InsertWorker(model))
+			return model;
+		return null;
 	}
 
 }

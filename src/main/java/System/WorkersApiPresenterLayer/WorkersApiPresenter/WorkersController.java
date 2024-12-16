@@ -6,16 +6,15 @@ import System.WorkersApiPresenterLayer.IWorkersClient;
 
 public class WorkersController implements IWorkersClient {
 
-	private WorkersService workerService;
-	private WorkerAvailabilityService workerAvailabilityService;
+	private WorkersService workerService = new WorkersService();
+	private WorkerAvailabilityService workerAvailabilityService = new WorkerAvailabilityService();
 
 	/**
 	 * 
 	 * @param worker
 	 */
 	public IWorkerModel CreateNewWorker(IWorkerModel worker) {
-		// TODO - implement WorkersController.CreateNewWorker
-		throw new UnsupportedOperationException();
+		return workerService.CreateNewWorker(worker);
 	}
 
 	/**
@@ -25,8 +24,7 @@ public class WorkersController implements IWorkersClient {
 	 */
 	@Override
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
-		// TODO - implement WorkersController.ChangeAvailability
-		throw new UnsupportedOperationException();
+		return workerAvailabilityService.ChangeAvailability(worek.GetId(), availability);
 	}
 
 	/**
@@ -34,8 +32,7 @@ public class WorkersController implements IWorkersClient {
 	 * @param workerId
 	 */
 	public IWorkerModel GetWorker(int workerId) {
-		// TODO - implement WorkersController.GetWorker
-		throw new UnsupportedOperationException();
+		return  workerService.GetWorker(workerId);
 	}
 
 }

@@ -8,6 +8,7 @@ public class AvailabilityModel implements IAvailabilityModel {
 	private Date From;
 	private Date To;
 	private Availability Type;
+	public int id;
 
 	@Override
 	public int GetWorkerId() {
@@ -27,5 +28,15 @@ public class AvailabilityModel implements IAvailabilityModel {
 	@Override
 	public Availability GetType() {
 		return null;
+	}
+
+	@Override
+	public int GetId() {
+		return this.id;
+	}
+
+	@Override
+	public void SetId(int id) {
+		this.id = id;
 	}
 }
