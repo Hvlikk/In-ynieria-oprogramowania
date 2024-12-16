@@ -26,20 +26,20 @@ public class OrderState implements IOrderState {
 
 	@Override
 	public boolean Disconnect() {
-		System.out.println("Success disconnection with OrdersDB");
+		System.out.println("Success disconnection with OrdersDB\n");
 		return true;
 	}
 
 	@Override
 	public Connection Connect() {
-		System.out.println("Success connection with OrdersDB");
+		System.out.println("Success connection with OrdersDB\n");
 		return null;
 	}
 
 	@Override
 	public boolean InsertOrder(IOrderModel order) {
 		if (order != null) {
-			System.out.println("Success insertion order");
+			System.out.println("Success insertion order\n");
 			orders.add(order);
 			return true;
 		}

@@ -17,7 +17,7 @@ public class OrderService {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		System.out.println("Success call to OrderApi");
+		System.out.println("Success call to OrderApi\n");
 		return client.CreateOrder(device,order,workerId,clientId);
 	}
 

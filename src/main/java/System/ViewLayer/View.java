@@ -38,26 +38,25 @@ public class View {
 	public void ExecuteUseCases() throws IOException {
 		System.out.printf("\n\nWykonaj PU: \n");
 		System.out.printf("PU4 stworzenie zlecenia naprawy bez przypisania serwisanta:          PU4a\n");
-		System.out.printf("PU4 stworzenie zlecenia naprawy z przypisaniem serwisanta:          PU4b\n");
+		System.out.printf("PU4 stworzenie zlecenia naprawy z przypisaniem serwisanta:           PU4b\n");
 		System.out.printf("PU21 przypisanie zlecenia serwisantowi:                              PU21\n");
 		System.out.printf("PU20 aktualizacja dostepnosci serwisanta:                            PU20\n");
-		System.out.printf("Wykonaj PU: \n");
-		System.out.printf("PU1: Podglad stanu calego magazynu:              A\n");
-		System.out.printf("PU2: Podglad stanu magazynowego wybranej czesci: B\n");
-		System.out.printf("PU9: Aktualizacja stanu magazynu:                C\n");
-		System.out.printf("PU10: Przywrocenie ostatniej wersji magazynu:    D\n");
-		System.out.printf("PU1E: Naloz filtr:                               E\n");
+		System.out.printf("PU1: Podglad stanu calego magazynu:              					 PU1\n");
+		System.out.printf("PU2: Podglad stanu magazynowego wybranej czesci: 					 PU2\n");
+		System.out.printf("PU9: Aktualizacja stanu magazynu:                					 PU9\n");
+		System.out.printf("PU10: Przywrocenie ostatniej wersji magazynu:    					 PU10\n");
+		System.out.printf("PU1E: Naloz filtr:                               					 PU1E\n");
 
 		Scanner myObj = new Scanner(System.in);
 
 		String result = myObj.nextLine();
 
 		switch (result) {
-			case "PU4a": {
+			case "PU4b": {
 				orderFacade.CreateOrder(mockDeviceModel,mockOrderModel,mockWorkerId,mockClientId);
 				break;
 			}
-			case "PU4b": {
+			case "PU4a": {
 				orderFacade.CreateOrder(mockDeviceModel,mockOrderModel,-1,mockClientId);
 				break;
 			}
@@ -69,7 +68,7 @@ public class View {
 				orderFacade.ChangeWorkerForOrder(mockWorkerModel,mockOrderModel);
 				break;
 			}
-			case "A": {
+			case "PU1": {
 				ArrayList<ItemModel> items = new ArrayList<>();
 				items = inventoryClient.ShowAll();
 				if (items.size() > 0){
@@ -84,7 +83,7 @@ public class View {
 
 				break;
 			}
-			case "B":{
+			case "PU2":{
 				System.out.println("Podaj part ID czesci, ktora chcesz wyswietlic!");
 				ArrayList<ItemModel> items = new ArrayList<>();
 				int selectedPartID = myObj.nextInt();
@@ -102,7 +101,7 @@ public class View {
 
 				break;
 			}
-			case "C": {
+			case "PU9": {
 				boolean isAppending = true;
 				boolean isOk;
 				ArrayList<ItemModel> items = new ArrayList<>();
@@ -137,7 +136,7 @@ public class View {
 					System.out.println("Blad w wykonywaniu update!");
 				break;
 			}
-			case "D": {
+			case "PU10": {
 				createBackupMock();
 				boolean isSuccess = inventoryClient.RecoverBackup(backupMock);
 				if (isSuccess) {
@@ -147,7 +146,7 @@ public class View {
 				}
 				break;
 			}
-			case "E": {
+			case "PU1E": {
 				ArrayList<ItemModel> filteredItems = new ArrayList<>();
 				filteredItems = inventoryClient.ApplyFilter();
 				System.out.println("Odfiltrowane przedmioty: ");
@@ -155,18 +154,6 @@ public class View {
 					System.out.println("Part ID: " + filteredItems.get(i).GetPartID(filteredItems.get(i)) + " Quantity : " + filteredItems.get(i).GetQuantity(filteredItems.get(i)));
 				}
 				break;
-			}
-			case "d":{
-				break;
-			}
-			case "e":{
-
-			}
-			case "f":{
-
-			}
-			case "g":{
-
 			}
 			default: {
 				return;

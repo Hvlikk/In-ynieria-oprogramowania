@@ -32,14 +32,14 @@ public class AvailabilityState implements IAvailabilityState, State {
 			return false;
 
 		availabilityModels[availability.GetId()] = availability;
-		System.out.println("Success insert availability");
+		System.out.println("Success insert availability\n");
 		return true;
 	}
 
 	@Override
 	public int UpdateAvailability(IAvailabilityModel availability) {
 		availabilityModels[availability.GetId()] = availability;
-		System.out.println("Success update availability");
+		System.out.println("Success update availability\n");
 		return availability.GetId();
 	}
 

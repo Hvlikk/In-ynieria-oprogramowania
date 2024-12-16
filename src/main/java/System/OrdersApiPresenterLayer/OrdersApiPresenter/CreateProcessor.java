@@ -8,15 +8,15 @@ public class CreateProcessor implements IOrderCreation {
     public Action Handle(IAction action) {
         switch (action.GetAction()) {
             case ActionEnum.SetWorker -> {
-                System.out.println("Success set client");
+                System.out.println("Success set worker\n");
                 return new Action(ActionEnum.SetClient);
             }
             case ActionEnum.SetClient -> {
-                System.out.println("Success set client");
+                System.out.println("Success set client\n");
                 return new Action(ActionEnum.SetDevice);
             }
             case ActionEnum.SetDevice -> {
-                System.out.println("Success set device");
+                System.out.println("Success set device\n");
                 return new Action(ActionEnum.Insert);
             }
             default -> {

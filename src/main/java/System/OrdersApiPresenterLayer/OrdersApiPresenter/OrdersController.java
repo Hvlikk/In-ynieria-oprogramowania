@@ -17,6 +17,7 @@ public class OrdersController implements IOrdersClient {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
+		System.out.println("Success call to OrderApi\n");
 		return orderService.CreateOrder(device,order,workerId,clientId);
 	}
 
@@ -34,6 +35,7 @@ public class OrdersController implements IOrdersClient {
 	 * @param order
 	 */
 	public boolean ChangeOrder(IOrderModel order) {
+		System.out.println("Success call to OrderApi\n");
 		return orderService.UpdateOrder(order) > -1;
 	}
 

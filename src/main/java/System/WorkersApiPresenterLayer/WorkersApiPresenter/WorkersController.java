@@ -14,6 +14,7 @@ public class WorkersController implements IWorkersClient {
 	 * @param worker
 	 */
 	public IWorkerModel CreateNewWorker(IWorkerModel worker) {
+		System.out.println("Success call to WorkerApi\n");
 		return workerService.CreateNewWorker(worker);
 	}
 
@@ -24,6 +25,7 @@ public class WorkersController implements IWorkersClient {
 	 */
 	@Override
 	public boolean ChangeAvailability(IWorkerModel worek, IAvailabilityModel availability) {
+		System.out.println("Success call to WorkerApi\n");
 		return workerAvailabilityService.ChangeAvailability(worek.GetId(), availability);
 	}
 
@@ -32,6 +34,7 @@ public class WorkersController implements IWorkersClient {
 	 * @param workerId
 	 */
 	public IWorkerModel GetWorker(int workerId) {
+		System.out.println("Success call to WorkerApi\n");
 		return  workerService.GetWorker(workerId);
 	}
 
