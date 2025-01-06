@@ -15,8 +15,7 @@ public class OrderCreation {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
-		// TODO - implement OrderCreation.CreateOrder
-		throw new UnsupportedOperationException();
+		return orderContext.CreateOrder(device,order,workerId,clientId);
 	}
 
 	/**
@@ -24,8 +23,7 @@ public class OrderCreation {
 	 * @param strategy
 	 */
 	public void SetStrategy(ICreateOrderStrategy strategy) {
-		// TODO - implement OrderCreation.SetStrategy
-		throw new UnsupportedOperationException();
+		orderContext.SetStrategy(strategy);
 	}
 
 }

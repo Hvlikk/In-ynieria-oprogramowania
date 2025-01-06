@@ -4,7 +4,6 @@ import System.OrdersApiModel.OrdersApiModel.IDeviceModel;
 import System.OrdersApiModel.OrdersApiModel.IOrderModel;
 import System.WorkerApiModelLayer.WorkersApiModel.AvailabilityModel;
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
-import System.WorkerApiModelLayer.WorkersApiModel.WorkerModel;
 
 public class OrderFacade implements IOrderFacade {
 
@@ -20,15 +19,19 @@ public class OrderFacade implements IOrderFacade {
 	 * @param clientId
 	 */
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
+
+		ICreateOrderStrategy strategy;
 		if (workerId == -1) {
-			orderCreation.orderContext.SetStrategy(new CreateSimpleOrderStrategy());
+			strategy = new CreateSimpleOrderStrategy();
 			System.out.println("Wybrano strategie bez pracownika\n");
 		}else {
-			orderCreation.orderContext.SetStrategy(new CreateOrderWithWorkerStrategy());
+			strategy = new CreateOrderWithWorkerStrategy();
 			System.out.println("Wybrano strategie z pracownikiem\n");
 		}
 
-		return orderCreation.orderContext.CreateOrder(device,order,workerId,clientId);
+		orderCreation.SetStrategy(strategy);
+
+		return orderCreation.CreateOrder(device,order,workerId,clientId);
 	}
 
 	/**
