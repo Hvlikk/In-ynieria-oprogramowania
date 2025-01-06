@@ -47,7 +47,10 @@ public class OrderFacade implements IOrderFacade {
 			return false;
 
 		AvailabilityModel availabilityModel = new AvailabilityModel();
-		if (!workerService.ChangeAvailability(model,availabilityModel))
+
+		boolean success = workerService.ChangeAvailability(model,availabilityModel);
+
+		if (!success)
 			return false;
 
 		return orderService.ChangeOrder(order);

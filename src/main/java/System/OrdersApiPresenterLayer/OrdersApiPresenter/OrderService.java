@@ -45,7 +45,9 @@ public class OrderService {
 
 		orderCreationChain.Handle(action);
 
-		return OrderState.getInstance().UpdateOrder(order);
+		OrderState instance = OrderState.getInstance();
+
+		return instance.UpdateOrder(order);
 	}
 
 	/**
