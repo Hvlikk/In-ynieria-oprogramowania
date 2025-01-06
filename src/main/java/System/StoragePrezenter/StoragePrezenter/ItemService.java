@@ -14,7 +14,9 @@ public class ItemService {
 	 * @param partsList
 	 */
 	public boolean UpdateData(ArrayList<ItemModel> partsList) {
-		return invProcessor.UpdateData(partsList);
+		boolean response;
+		response = invProcessor.UpdateData(partsList);
+		return response;
 	}
 
 	/**
@@ -22,11 +24,15 @@ public class ItemService {
 	 * @param backup
 	 */
 	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
-		return invProcessor.RecoverBackup(backup);
+		boolean response;
+		response = invProcessor.RecoverBackup(backup);
+		return response;
 	}
 
 	public ArrayList<ItemModel> ShowAll() {
-		return presentInventory.ShowAll();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = presentInventory.ShowAll();
+		return itemList;
 		//throw new UnsupportedOperationException();
 	}
 
@@ -35,11 +41,15 @@ public class ItemService {
 	 * @param partID
 	 */
 	public ArrayList<ItemModel> ShowPart(int partID) {
-		return presentInventory.ShowPart(partID);
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = presentInventory.ShowPart(partID);
+		return itemList;
 	}
 
 	public ArrayList<ItemModel> ApplyFilter() {
-		return presentInventory.ApplyFilter();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = presentInventory.ApplyFilter();
+		return itemList;
 	}
 
 }

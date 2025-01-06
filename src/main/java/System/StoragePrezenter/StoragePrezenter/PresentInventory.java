@@ -11,7 +11,9 @@ public class PresentInventory {
 
 
 	public ArrayList<ItemModel> ShowAll() {
-		return itemState.DisplayAll();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemState.DisplayAll();
+		return itemList;
 
 		//throw new UnsupportedOperationException();
 	}
@@ -21,11 +23,15 @@ public class PresentInventory {
 	 * @param partID
 	 */
 	public ArrayList<ItemModel> ShowPart(int partID) {
-		return itemState.SelectItemToDisplay(partID);
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemState.SelectItemToDisplay(partID);
+		return itemList;
 	}
 
 	public ArrayList<ItemModel> ApplyFilter() {
-		return itemState.FilterData();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemState.FilterData();
+		return itemList;
 	}
 
 	private void PrepareInventoryStateToDisplay() {

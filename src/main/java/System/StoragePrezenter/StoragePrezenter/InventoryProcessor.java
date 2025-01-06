@@ -14,7 +14,9 @@ public class InventoryProcessor {
 	 * @param partsList
 	 */
 	public boolean UpdateData(ArrayList<ItemModel> partsList) {
-		return itemState.UpdateItems(partsList);
+		boolean response;
+		response = itemState.UpdateItems(partsList);
+		return response;
 	}
 
 	/**
@@ -22,8 +24,9 @@ public class InventoryProcessor {
 	 * @param backup
 	 */
 	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
-
-		return itemState.RecoverBackup(backup);
+		boolean response;
+		response = itemState.RecoverBackup(backup);
+		return response;
 	}
 
 	private void PrepareDataToUpdate() {

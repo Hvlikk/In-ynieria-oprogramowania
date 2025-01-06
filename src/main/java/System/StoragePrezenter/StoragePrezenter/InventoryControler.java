@@ -13,7 +13,9 @@ public class InventoryControler implements IInventoryClient {
 	 * @param partsList
 	 */
 	public boolean UpdateData(ArrayList<ItemModel> partsList) {
-		return itemService.UpdateData(partsList);
+		boolean response;
+		response = itemService.UpdateData(partsList);
+		return response;
 	}
 
 	/**
@@ -21,11 +23,15 @@ public class InventoryControler implements IInventoryClient {
 	 * @param backup
 	 */
 	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
-		return itemService.RecoverBackup(backup);
+		boolean response;
+		response = itemService.RecoverBackup(backup);
+		return response;
 	}
 
 	public ArrayList<ItemModel> ShowAll() {
-		return itemService.ShowAll();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemService.ShowAll();
+		return itemList;
 		//throw new UnsupportedOperationException();
 	}
 
@@ -34,11 +40,15 @@ public class InventoryControler implements IInventoryClient {
 	 * @param partID
 	 */
 	public ArrayList<ItemModel> ShowPart(int partID) {
-		return itemService.ShowPart(partID);
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemService.ShowPart(partID);
+		return itemList;
 	}
 
 	public ArrayList<ItemModel> ApplyFilter() {
-		return itemService.ApplyFilter();
+		ArrayList<ItemModel> itemList = new ArrayList<>();
+		itemList = itemService.ApplyFilter();
+		return itemList;
 	}
 
 	public void CreateReplenishmentOrder() {

@@ -135,10 +135,16 @@ public class View {
 				else
 					System.out.println("Blad w wykonywaniu update!");
 				break;
+
+
 			}
 			case "PU10": {
 				createBackupMock();
 				boolean isSuccess = inventoryClient.RecoverBackup(backupMock);
+
+				for (int i = 0; i < backupMock.size(); i++) {
+					System.out.println("ID" + backupMock.get(i).GetPartID(backupMock.get(i)) + "Quant" + backupMock.get(i).GetQuantity(backupMock.get(i)));
+				}
 				if (isSuccess) {
 					System.out.println("Backup wgrany prawidlowo!");
 				} else {
