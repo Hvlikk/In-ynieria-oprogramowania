@@ -37,6 +37,6 @@ public class AvailabilityModel implements IAvailabilityModel {
 
 	@Override
 	public void SetId(int id) {
-		this.id = id;
+		this.WorkerId = id;
 	}
 }

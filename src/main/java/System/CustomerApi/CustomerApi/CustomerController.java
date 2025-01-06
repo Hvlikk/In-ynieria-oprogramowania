@@ -9,6 +9,7 @@ public class CustomerController implements ICustomerClient {
     @Override
     public CustomerModel GetCustomer(int customerId) {
         System.out.println("Success call to CustomerApi\n");
-        return State.getInstance().GetCustomer(customerId);
+        State state = State.getInstance();
+        return state.GetCustomer(customerId);
     }
 }

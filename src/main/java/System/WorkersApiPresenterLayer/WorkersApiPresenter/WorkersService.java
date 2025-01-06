@@ -19,7 +19,8 @@ public class WorkersService {
 	 * @param Id
 	 */
 	public IWorkerModel GetWorker(int Id) {
-		return WorkerState.getInstance().GetWorkerById(Id);
+		WorkerState instance = WorkerState.getInstance();
+		return instance.GetWorkerById(Id);
 	}
 
 }

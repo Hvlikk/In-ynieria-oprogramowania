@@ -22,11 +22,15 @@ public class OrderService {
 
 		this.orderCreationChain = new CreateProcessor();
 
+		orderCreationChain.Handle(action);
+
 		while (action.GetAction() != ActionEnum.Insert) {
 			action = orderCreationChain.Handle(action);
 		}
 
-		OrderState.getInstance().InsertOrder(order);
+		OrderState instance = OrderState.getInstance();
+
+		instance.InsertOrder(order);
 
 		return order;
 	}

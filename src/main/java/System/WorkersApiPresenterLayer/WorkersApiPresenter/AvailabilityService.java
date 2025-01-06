@@ -7,18 +7,9 @@ public class AvailabilityService {
 
 	private AvailabilityCreator availabilityCreator = new AvailabilityCreator();
 
-	/**
-	 * 
-	 * @param id
-	 */
-	private IAvailabilityModel CreateNewAvailability(int id) {
-		IAvailabilityModel model = availabilityCreator.CreateNewAvailability();
-		model.SetId(id);
-
-		if (AvailabilityState.getInstance().InsertAvailability(model))
-			return model;
-
-		return null;
+	private IAvailabilityModel CreateNewAvailability(IAvailabilityModel availability, int WorkerId) {
+		IAvailabilityModel model = availabilityCreator.CreateNewAvailability(availability, WorkerId);
+		return model;
 	}
 
 	/**
@@ -27,11 +18,17 @@ public class AvailabilityService {
 	 * @param availability
 	 */
 	public boolean ChangeAvailability(int WorkerId, IAvailabilityModel availability) {
-		int result = AvailabilityState.getInstance().UpdateAvailability(availability);
-		if (result > -1)
-			return true;
+		IAvailabilityModel model = CreateNewAvailability(availability, WorkerId);
 
-		return false;
+		if (model == null)
+			return false;
+
+		AvailabilityState state = AvailabilityState.getInstance();
+
+		int result = state.UpdateAvailability(model);
+		if (result == -1)
+			return false;
+
+		return true;
 	}
-
 }

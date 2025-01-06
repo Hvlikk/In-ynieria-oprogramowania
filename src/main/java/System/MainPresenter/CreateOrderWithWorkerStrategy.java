@@ -54,18 +54,19 @@ public class CreateOrderWithWorkerStrategy implements ICreateOrderStrategy {
 	public IOrderModel CreateOrder(IDeviceModel device, IOrderModel order, int workerId, int clientId) {
 		IWorkerModel worker = workerService.GetWorker(workerId);
 
-		if (worker.IsBusy())
-			return null;
-
-		AvailabilityModel availabilityModel = new AvailabilityModel();
-		workerService.ChangeAvailability(worker,availabilityModel);
-
-		CustomerModel customerModel = customerService.GetCustomer(clientId);
-
-		if (customerModel == null)
+		boolean busy = worker.IsBusy();
+		if (busy)
 			return null;
 
 		CustomerModel customer = customerService.GetCustomer(clientId);
+
+		if (customer == null)
+			return null;
+
+		AvailabilityModel availabilityModel = new AvailabilityModel();
+
+		workerService.ChangeAvailability(worker,availabilityModel);
+
 		return orderService.CreateOrder(device,order,worker.GetId(),customer.getId());
 	}
 }

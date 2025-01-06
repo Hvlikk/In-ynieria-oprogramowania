@@ -1,6 +1,7 @@
 package System.WorkerApiModelLayer;
 
 import System.WorkerApiModelLayer.WorkersApiModel.IWorkerModel;
+import System.WorkerApiModelLayer.WorkersApiModel.WorkerState;
 
 public interface IWorkerState {
 
@@ -27,5 +28,7 @@ public interface IWorkerState {
 	 * @param workerId
 	 */
 	IWorkerModel DeleteWorker(int workerId);
+
+	static WorkerState getInstance() {return null;};
 
 }
