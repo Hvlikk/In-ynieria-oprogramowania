@@ -63,9 +63,9 @@ public class CreateOrderWithWorkerStrategy implements ICreateOrderStrategy {
 		if (customer == null)
 			return null;
 
-		AvailabilityModel availabilityModel = new AvailabilityModel();
+		AvailabilityModel model = new AvailabilityModel();
 
-		workerService.ChangeAvailability(worker,availabilityModel);
+		workerService.ChangeAvailability(worker,model);
 
 		return orderService.CreateOrder(device,order,worker.GetId(),customer.getId());
 	}
