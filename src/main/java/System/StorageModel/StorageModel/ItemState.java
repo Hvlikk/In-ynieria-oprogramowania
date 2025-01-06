@@ -16,13 +16,15 @@ public class ItemState implements IItemState {
 	public ArrayList<ItemModel> SelectItemToDisplay(int partID) {
 		int itemListID;
 		ArrayList<ItemModel> itemFound = new ArrayList<>();
+		ItemModel itemToDisplay;
+
 		for(int i = 0; i < itemList.size(); i++){
-			itemListID = itemList.get(i).GetPartID(itemList.get(i));
+			itemToDisplay = itemList.get(i);
+			itemListID = itemToDisplay.GetPartID(itemToDisplay);
 
 			if (itemListID == partID){
-				itemFound.add(itemList.get(i));
-			} else
-				continue;
+				itemFound.add(itemToDisplay);
+			}
 		}
 		return itemFound;
 	}
@@ -40,17 +42,22 @@ public class ItemState implements IItemState {
 	 * @param itemsToUpdate
 	 */
 	public boolean UpdateItems(ArrayList<ItemModel> itemsToUpdate) {
-		boolean updated = true;
+
 		boolean partListFound = false;
-		int updateID, dbID, insertID, insertQuant;
+		int updateID, dbID, insertID, insertQuant, quantToSet, quantInDatabase;
+		ItemModel itemToUpdate, dbItem, itemToInsert;
+
 		try {
 			for (int i = 0; i < itemsToUpdate.size(); i++) {
 				for (int j = 0; j < itemList.size(); j++) {
-					updateID = itemsToUpdate.get(i).GetPartID(itemsToUpdate.get(i));
-					dbID = itemList.get(j).GetPartID(itemList.get(j));
+					itemToUpdate = itemsToUpdate.get(i);
+					updateID = itemToUpdate.GetPartID(itemToUpdate);
+					dbItem = itemList.get(j);
+					dbID = dbItem.GetPartID(dbItem);
 
 					if (updateID == dbID){
-						itemList.get(j).SetQuantity(itemsToUpdate.get(i).GetQuantity(itemList.get(i)));
+						quantToSet = itemToUpdate.GetQuantity(itemToUpdate);
+						dbItem.SetQuantity(quantToSet);
 						partListFound = true;
 					}
 
@@ -58,10 +65,9 @@ public class ItemState implements IItemState {
 						break;
 				}
 
-				if (partListFound == false){
-					insertID = itemsToUpdate.get(i).GetPartID(itemsToUpdate.get(i));
-					insertQuant = itemsToUpdate.get(i).GetQuantity(itemsToUpdate.get(i));
-					itemList.add(CreateItem(insertID, insertQuant));
+				if (!partListFound){
+					itemToInsert = itemsToUpdate.get(i);
+					itemList.add(itemToInsert);
 				}
 
 				partListFound = false;
@@ -69,6 +75,7 @@ public class ItemState implements IItemState {
 		} catch (Exception ex) {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -77,16 +84,15 @@ public class ItemState implements IItemState {
 	 * @param backup
 	 */
 	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
+		boolean response = false;
 		try {
 			itemList = backup;
-			for (int i = 0; i < itemList.size(); i++)
-			{
-				System.out.println("ID" + itemList.get(i).GetPartID(itemList.get(i)) + "Quant" + itemList.get(i).GetQuantity(itemList.get(i)));
-			}
-			return true;
+			response = true;
 		} catch (Exception ex){
-			return false;
+			response = false;
+			return response;
 		}
+		return response;
 	}
 
 	/**
@@ -99,8 +105,11 @@ public class ItemState implements IItemState {
 	}
 
 	public ArrayList<ItemModel> FilterData() {
+
 		ArrayList<ItemModel> filteredItems = new ArrayList<>();
-		int chosenFilter, filterNumber, XD;
+		int chosenFilter, filterNumber, searchedItemID, searchedItemQuant;
+		ItemModel searchedItem;
+
 		System.out.printf("partID > partIDFilter         | 1\n");
 		System.out.printf("partID < partIDFilter         | 2\n");
 		System.out.printf("quantity > quantityFilter     | 3\n");
@@ -114,44 +123,45 @@ public class ItemState implements IItemState {
 		switch (chosenFilter){
 			case 1: {
 				for (int i = 0; i < itemList.size(); i++){
-					XD = itemList.get(i).GetPartID(itemList.get(i));
+					searchedItem = itemList.get(i);
+					searchedItemID = searchedItem.GetPartID(searchedItem);
 
-					if (XD > filterNumber)
-						filteredItems.add(itemList.get(i));
+					if (searchedItemID > filterNumber)
+						filteredItems.add(searchedItem);
 				}
 				break;
 			}
 			case 2:{
-
 				for (int i = 0; i < itemList.size(); i++){
-					XD = itemList.get(i).GetPartID(itemList.get(i));
+					searchedItem = itemList.get(i);
+					searchedItemID = searchedItem.GetPartID(searchedItem);
 
-					if (XD < filterNumber)
-						filteredItems.add(itemList.get(i));
+					if (searchedItemID < filterNumber)
+						filteredItems.add(searchedItem);
 				}
 				break;
 			}
 
 			case 3: {
 				for (int i = 0; i < itemList.size(); i++){
-					XD = itemList.get(i).GetQuantity(itemList.get(i));
+					searchedItem = itemList.get(i);
+					searchedItemQuant = searchedItem.GetQuantity(searchedItem);
 
-					if (XD > filterNumber)
-						filteredItems.add(itemList.get(i));
+					if (searchedItemQuant > filterNumber)
+						filteredItems.add(searchedItem);
 				}
 				break;
 			}
 
 			case 4: {
 				for (int i = 0; i < itemList.size(); i++){
-					XD = itemList.get(i).GetQuantity(itemList.get(i));
+					searchedItem = itemList.get(i);
+					searchedItemQuant = searchedItem.GetQuantity(searchedItem);
 
-					if (XD < filterNumber)
-						filteredItems.add(itemList.get(i));
+					if (searchedItemQuant < filterNumber)
+						filteredItems.add(searchedItem);
 				}
-				break;
 			}
-
 			default:
 				break;
 		}
