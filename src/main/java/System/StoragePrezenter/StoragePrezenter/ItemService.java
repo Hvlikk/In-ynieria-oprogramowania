@@ -46,9 +46,9 @@ public class ItemService {
 		return itemList;
 	}
 
-	public ArrayList<ItemModel> ApplyFilter() {
+	public ArrayList<ItemModel> ApplyFilter(int chosenFilter, int filterNumber) {
 		ArrayList<ItemModel> itemList = new ArrayList<>();
-		itemList = presentInventory.ApplyFilter();
+		itemList = presentInventory.ApplyFilter(chosenFilter, filterNumber);
 		return itemList;
 	}
 

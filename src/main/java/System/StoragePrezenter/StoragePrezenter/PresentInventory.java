@@ -28,9 +28,9 @@ public class PresentInventory {
 		return itemList;
 	}
 
-	public ArrayList<ItemModel> ApplyFilter() {
+	public ArrayList<ItemModel> ApplyFilter(int chosenFilter, int filterNumber) {
 		ArrayList<ItemModel> itemList = new ArrayList<>();
-		itemList = itemState.FilterData();
+		itemList = itemState.FilterData(chosenFilter, filterNumber);
 		return itemList;
 	}
 

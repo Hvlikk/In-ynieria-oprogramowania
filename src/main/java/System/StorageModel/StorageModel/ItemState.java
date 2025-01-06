@@ -104,21 +104,11 @@ public class ItemState implements IItemState {
 		return new ItemModel(partID, quantity);
 	}
 
-	public ArrayList<ItemModel> FilterData() {
+	public ArrayList<ItemModel> FilterData(int chosenFilter, int filterNumber) {
 
 		ArrayList<ItemModel> filteredItems = new ArrayList<>();
-		int chosenFilter, filterNumber, searchedItemID, searchedItemQuant;
+		int searchedItemID, searchedItemQuant;
 		ItemModel searchedItem;
-
-		System.out.printf("partID > partIDFilter         | 1\n");
-		System.out.printf("partID < partIDFilter         | 2\n");
-		System.out.printf("quantity > quantityFilter     | 3\n");
-		System.out.printf("quantity < quantityFilter     | 4\n");
-		Scanner scanner = new Scanner(System.in);
-		System.out.printf("Wybierz filtr: \n");
-		chosenFilter = scanner.nextInt();
-		System.out.printf("Podaj wartosc filtra: \n");
-		filterNumber = scanner.nextInt();
 
 		switch (chosenFilter){
 			case 1: {

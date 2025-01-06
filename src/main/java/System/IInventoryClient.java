@@ -27,7 +27,7 @@ public interface IInventoryClient {
 	 */
 	ArrayList<ItemModel> ShowPart(int partID);
 
-	ArrayList<ItemModel> ApplyFilter();
+	ArrayList<ItemModel> ApplyFilter(int chosenFilter, int filterNumber);
 
 	void CreateReplenishmentOrder();
 

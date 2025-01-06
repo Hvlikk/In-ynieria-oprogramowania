@@ -153,8 +153,18 @@ public class View {
 				break;
 			}
 			case "PU1E": {
+				int chosenFilter, filterNumber;
+				System.out.printf("partID > partIDFilter         | 1\n");
+				System.out.printf("partID < partIDFilter         | 2\n");
+				System.out.printf("quantity > quantityFilter     | 3\n");
+				System.out.printf("quantity < quantityFilter     | 4\n");
+				Scanner scanner = new Scanner(System.in);
+				System.out.printf("Wybierz filtr: \n");
+				chosenFilter = scanner.nextInt();
+				System.out.printf("Podaj wartosc filtra: \n");
+				filterNumber = scanner.nextInt();
 				ArrayList<ItemModel> filteredItems = new ArrayList<>();
-				filteredItems = inventoryClient.ApplyFilter();
+				filteredItems = inventoryClient.ApplyFilter(chosenFilter, filterNumber);
 				System.out.println("Odfiltrowane przedmioty: ");
 				for(int i = 0 ; i < filteredItems.size(); i++){
 					System.out.println("Part ID: " + filteredItems.get(i).GetPartID(filteredItems.get(i)) + " Quantity : " + filteredItems.get(i).GetQuantity(filteredItems.get(i)));
