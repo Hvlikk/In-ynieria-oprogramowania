@@ -6,17 +6,21 @@ public class UpdateProcessor implements IOrderCreation {
         switch (action.GetAction()) {
             case ActionEnum.SetWorker -> {
                 System.out.println("Success set worker\n");
+                setNext(new UpdateProcessor());
                 return new Action(ActionEnum.SetClient);
             }
             case ActionEnum.SetClient -> {
                 System.out.println("Success set client\n");
+                setNext(new UpdateProcessor());
                 return new Action(ActionEnum.SetDevice);
             }
             case ActionEnum.SetDevice -> {
                 System.out.println("Success set device\n");
+                setNext(new UpdateProcessor());
                 return new Action(ActionEnum.Insert);
             }
             default -> {
+                setNext(new CreateProcessor());
                 return new Action(ActionEnum.Insert);
             }
         }

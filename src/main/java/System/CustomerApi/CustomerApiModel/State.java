@@ -17,7 +17,8 @@ public class State implements ICustomerState {
 	public CustomerModel GetCustomer(int customerId) {
 		if (customers.length > customerId)
 			return customers[customerId];
-		return null;
+		else
+			return null;
 	}
 
 	public static State getInstance() {

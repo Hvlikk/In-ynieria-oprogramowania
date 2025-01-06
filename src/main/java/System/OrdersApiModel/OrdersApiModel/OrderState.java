@@ -48,8 +48,12 @@ public class OrderState implements IOrderState {
 
 	@Override
 	public int UpdateOrder(IOrderModel order) {
+		if (order.GetId() > orders.size())
+			return -1;
+
 		orders.set(order.GetId(),order);
 		System.out.println("Success update order\n");
+
 		return order.GetId();
 	}
 
