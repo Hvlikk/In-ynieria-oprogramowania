@@ -9,6 +9,10 @@ public class WorkerModel implements IWorkerModel {
 	private int Id;
 	private boolean Busy;
 
+	public WorkerModel() {
+
+	}
+
 	@Override
 	public String GetName() {
 		return "";
