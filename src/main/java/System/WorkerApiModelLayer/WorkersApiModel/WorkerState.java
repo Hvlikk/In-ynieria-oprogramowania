@@ -23,13 +23,12 @@ public class WorkerState implements IWorkerState, State {
 	}
 
 	@Override
-	public boolean InsertWorker(IWorkerModel worker) {
-		if (worker.GetId() < workers.size() && worker.GetId() > 0  ) {
-			workers.add((WorkerModel) worker);
-			System.out.println("Success insert worker\n");
-			return true;
-		}
-		return false;
+	public boolean InsertWorker(IWorkerModel worker) throws Exception {
+		if (worker.GetId() < 0)
+			throw new Exception("Worker ID must be non-negative");
+		workers.add((WorkerModel) worker);
+		System.out.println("Success insert worker\n");
+		return true;
 	}
 
 	@Override

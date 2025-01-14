@@ -9,7 +9,7 @@ public interface IWorkersClient {
 	 * 
 	 * @param worker
 	 */
-	IWorkerModel CreateNewWorker(IWorkerModel worker);
+	IWorkerModel CreateNewWorker(IWorkerModel worker) throws Exception;
 
 	/**
 	 * 

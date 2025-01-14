@@ -9,7 +9,7 @@ public interface IWorkerState {
 	 * 
 	 * @param worker
 	 */
-	boolean InsertWorker(IWorkerModel worker);
+	boolean InsertWorker(IWorkerModel worker) throws Exception;
 
 	/**
 	 * 
