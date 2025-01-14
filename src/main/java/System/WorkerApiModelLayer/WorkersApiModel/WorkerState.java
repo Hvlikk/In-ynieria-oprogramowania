@@ -3,16 +3,11 @@ package System.WorkerApiModelLayer.WorkersApiModel;
 import System.WorkerApiModelLayer.IWorkerState;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class WorkerState implements IWorkerState, State {
 
-	private static WorkerModel[] workers = new WorkerModel[] {
-			new WorkerModel(),
-			new WorkerModel(),
-			new WorkerModel(),
-			new WorkerModel(),
-			new WorkerModel(),
-	};
+	private static ArrayList<WorkerModel> workers = new ArrayList<>();
 	private static WorkerState instance;
 
 
@@ -29,8 +24,8 @@ public class WorkerState implements IWorkerState, State {
 
 	@Override
 	public boolean InsertWorker(IWorkerModel worker) {
-		if (worker.GetId() < workers.length) {
-			workers[worker.GetId()] = (WorkerModel) worker;
+		if (worker.GetId() < workers.size() && worker.GetId() > 0  ) {
+			workers.add((WorkerModel) worker);
 			System.out.println("Success insert worker\n");
 			return true;
 		}
@@ -39,19 +34,20 @@ public class WorkerState implements IWorkerState, State {
 
 	@Override
 	public int UpdateWorker(IWorkerModel worker) {
-		workers[worker.GetId()] = (WorkerModel) worker;
+		int index  = worker.GetId();
+		workers.set(index, (WorkerModel) worker);
 		return worker.GetId();
 	}
 
 	@Override
 	public IWorkerModel GetWorkerById(int workerId) {
-		return workers[workerId];
+		return workers.get(workerId);
 	}
 
 	@Override
 	public WorkerModel DeleteWorker(int workerId) {
-		WorkerModel worker = workers[workerId];
-		workers[workerId] = null;
+		WorkerModel worker = workers.get(workerId);
+		workers.remove(workerId);
 		return worker;
 	}
 

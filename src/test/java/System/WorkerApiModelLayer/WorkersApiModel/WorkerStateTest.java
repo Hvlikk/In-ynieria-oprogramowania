@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import java.sql.Connection;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,16 +15,10 @@ class WorkerStateTest {
     private WorkerState workerState;
 
     @Mock
-    private IWorkerModel mockWorker = new WorkerModel();
+    private WorkerModel mockWorker;
 
     @BeforeEach
     void setUp() {
-        // We mock the Connection object here, even though it isn't really used in the test
-//        try{
-//            //Connection mockConnection = Mockito.mock(Connection.class);
-//        } catch (RuntimeException e) {
-//
-//        }
         MockitoAnnotations.openMocks(this);
         workerState = WorkerState.getInstance();
     }
@@ -63,6 +58,26 @@ class WorkerStateTest {
 
         // Verify that the worker was inserted at the correct position
         assertSame(mockWorker, workerState.GetWorkerById(0), "Inserted worker should be at index 0.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "-1, false",
+            "0, false",
+            "1, true"
+    })
+    void testParametrizedInsertWorker(int workerId, boolean expectedResult) {
+        // Set up the mock WorkerModel
+        Mockito.when(mockWorker.GetId()).thenReturn(workerId);
+
+        // Insert the worker into WorkerState
+        boolean result = workerState.InsertWorker(mockWorker);
+
+        // Verify the result
+        assertTrue(result == expectedResult, "Worker insertion should match expected result.");
+
+        // Verify that the worker was inserted at the correct position
+        assertSame(mockWorker, workerState.GetWorkerById(workerId), "Inserted worker should be at the correct position.");
     }
 
     @Test

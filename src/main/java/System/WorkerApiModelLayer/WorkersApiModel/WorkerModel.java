@@ -2,12 +2,12 @@ package System.WorkerApiModelLayer.WorkersApiModel;
 
 public class WorkerModel implements IWorkerModel {
 
-	private String Name;
-	private String Surname;
-	private int Salary;
-	private String Profession;
-	private int Id;
-	private boolean Busy;
+	public String Name;
+	public String Surname;
+	public int Salary;
+	public String Profession;
+	public int Id;
+	public boolean Busy;
 
 	public WorkerModel() {
 
