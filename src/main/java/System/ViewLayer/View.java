@@ -74,7 +74,7 @@ public class View {
 				if (items.size() > 0){
 					for (int i = 0; i < items.size(); i++)
 					{
-						System.out.println("Part ID:"  + items.get(i).GetPartID(items.get(i)) + " Quantity : " + items.get(i).GetQuantity(items.get(i)));
+						System.out.println("Part ID:"  + items.get(i).GetPartID() + " Quantity : " + items.get(i).GetQuantity());
 					}
 				}
 				else {
@@ -92,7 +92,7 @@ public class View {
 				if (items.size() > 0){
 					for (int i = 0; i < items.size(); i++)
 					{
-						System.out.println("Part ID:"  + items.get(i).GetPartID(items.get(i)) + " Quantity : " + items.get(i).GetQuantity(items.get(i)));
+						System.out.println("Part ID:"  + items.get(i).GetPartID() + " Quantity : " + items.get(i).GetQuantity());
 					}
 				}
 				else {
@@ -143,7 +143,7 @@ public class View {
 				boolean isSuccess = inventoryClient.RecoverBackup(backupMock);
 
 				for (int i = 0; i < backupMock.size(); i++) {
-					System.out.println("ID" + backupMock.get(i).GetPartID(backupMock.get(i)) + "Quant" + backupMock.get(i).GetQuantity(backupMock.get(i)));
+					System.out.println("ID" + backupMock.get(i).GetPartID() + "Quant" + backupMock.get(i).GetQuantity());
 				}
 				if (isSuccess) {
 					System.out.println("Backup wgrany prawidlowo!");
@@ -167,7 +167,7 @@ public class View {
 				filteredItems = inventoryClient.ApplyFilter(chosenFilter, filterNumber);
 				System.out.println("Odfiltrowane przedmioty: ");
 				for(int i = 0 ; i < filteredItems.size(); i++){
-					System.out.println("Part ID: " + filteredItems.get(i).GetPartID(filteredItems.get(i)) + " Quantity : " + filteredItems.get(i).GetQuantity(filteredItems.get(i)));
+					System.out.println("Part ID: " + filteredItems.get(i).GetPartID() + " Quantity : " + filteredItems.get(i).GetQuantity());
 				}
 				break;
 			}

@@ -2,17 +2,11 @@ package System.StorageModel.StorageModel;
 
 public interface IItemModel {
 
-	/**
-	 * 
-	 * @param item
-	 */
-	int GetPartID(ItemModel item);
 
-	/**
-	 * 
-	 * @param item
-	 */
-	int GetQuantity(ItemModel item);
+	int GetPartID();
+
+
+	int GetQuantity();
 
 	/**
 	 * 

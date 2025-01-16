@@ -20,7 +20,7 @@ public class ItemState implements IItemState {
 
 		for(int i = 0; i < itemList.size(); i++){
 			itemToDisplay = itemList.get(i);
-			itemListID = itemToDisplay.GetPartID(itemToDisplay);
+			itemListID = itemToDisplay.GetPartID();
 
 			if (itemListID == partID){
 				itemFound.add(itemToDisplay);
@@ -42,21 +42,30 @@ public class ItemState implements IItemState {
 	 * @param itemsToUpdate
 	 */
 	public boolean UpdateItems(ArrayList<ItemModel> itemsToUpdate) {
-
 		boolean partListFound = false;
 		int updateID, dbID, insertID, insertQuant, quantToSet, quantInDatabase;
 		ItemModel itemToUpdate, dbItem, itemToInsert;
 
+		if (itemsToUpdate == null) {
+			throw new NullPointerException("itemsToUpdate cannot be null");
+		}
+
+		for (ItemModel item : itemsToUpdate) {
+			if (item.GetPartID() < 0 || item.GetQuantity() < 0) {
+				throw new IllegalArgumentException("partID and quantity cannot be negative");
+			}
+		}
+		
 		try {
 			for (int i = 0; i < itemsToUpdate.size(); i++) {
 				for (int j = 0; j < itemList.size(); j++) {
 					itemToUpdate = itemsToUpdate.get(i);
-					updateID = itemToUpdate.GetPartID(itemToUpdate);
+					updateID = itemToUpdate.GetPartID();
 					dbItem = itemList.get(j);
-					dbID = dbItem.GetPartID(dbItem);
+					dbID = dbItem.GetPartID();
 
 					if (updateID == dbID){
-						quantToSet = itemToUpdate.GetQuantity(itemToUpdate);
+						quantToSet = itemToUpdate.GetQuantity();
 						dbItem.SetQuantity(quantToSet);
 						partListFound = true;
 					}
@@ -84,15 +93,11 @@ public class ItemState implements IItemState {
 	 * @param backup
 	 */
 	public boolean RecoverBackup(ArrayList<ItemModel> backup) {
-		boolean response = false;
-		try {
-			itemList = backup;
-			response = true;
-		} catch (Exception ex){
-			response = false;
-			return response;
+		if (backup == null) {
+			throw new NullPointerException("Backup cannot be null");
 		}
-		return response;
+		this.itemList = backup;
+		return true;
 	}
 
 	/**
@@ -101,10 +106,17 @@ public class ItemState implements IItemState {
 	 * @param quantity
 	 */
 	public ItemModel CreateItem(int partID, int quantity) {
+		if (partID < 0 || quantity < 0) {
+			throw new IllegalArgumentException("partID and quantity cannot be negative");
+		}
 		return new ItemModel(partID, quantity);
 	}
 
 	public ArrayList<ItemModel> FilterData(int chosenFilter, int filterNumber) {
+
+		if (chosenFilter < 1 || chosenFilter > 4) {
+			throw new IllegalArgumentException("Invalid filter type");
+		}
 
 		ArrayList<ItemModel> filteredItems = new ArrayList<>();
 		int searchedItemID, searchedItemQuant;
@@ -114,7 +126,7 @@ public class ItemState implements IItemState {
 			case 1: {
 				for (int i = 0; i < itemList.size(); i++){
 					searchedItem = itemList.get(i);
-					searchedItemID = searchedItem.GetPartID(searchedItem);
+					searchedItemID = searchedItem.GetPartID();
 
 					if (searchedItemID > filterNumber)
 						filteredItems.add(searchedItem);
@@ -124,7 +136,7 @@ public class ItemState implements IItemState {
 			case 2:{
 				for (int i = 0; i < itemList.size(); i++){
 					searchedItem = itemList.get(i);
-					searchedItemID = searchedItem.GetPartID(searchedItem);
+					searchedItemID = searchedItem.GetPartID();
 
 					if (searchedItemID < filterNumber)
 						filteredItems.add(searchedItem);
@@ -135,7 +147,7 @@ public class ItemState implements IItemState {
 			case 3: {
 				for (int i = 0; i < itemList.size(); i++){
 					searchedItem = itemList.get(i);
-					searchedItemQuant = searchedItem.GetQuantity(searchedItem);
+					searchedItemQuant = searchedItem.GetQuantity();
 
 					if (searchedItemQuant > filterNumber)
 						filteredItems.add(searchedItem);
@@ -146,7 +158,7 @@ public class ItemState implements IItemState {
 			case 4: {
 				for (int i = 0; i < itemList.size(); i++){
 					searchedItem = itemList.get(i);
-					searchedItemQuant = searchedItem.GetQuantity(searchedItem);
+					searchedItemQuant = searchedItem.GetQuantity();
 
 					if (searchedItemQuant < filterNumber)
 						filteredItems.add(searchedItem);
