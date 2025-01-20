@@ -44,6 +44,7 @@ public class WorkerStateTests implements TestExecutionExceptionHandler {
     @Mock
     private WorkerModel mockWorker;
 
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
