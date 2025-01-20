@@ -10,7 +10,7 @@ public class WorkersService {
 	/**
 	 * 
 	 */
-	public IWorkerModel CreateNewWorker(IWorkerModel workerModel) throws Exception {
+	public IWorkerModel CreateNewWorker(IWorkerModel workerModel) {
 		return workerCreator.CreateNewWorker(workerModel);
 	}
 

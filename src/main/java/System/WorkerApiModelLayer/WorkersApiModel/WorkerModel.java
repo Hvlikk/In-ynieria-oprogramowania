@@ -9,6 +9,15 @@ public class WorkerModel implements IWorkerModel {
 	public int Id;
 	public boolean Busy;
 
+	public WorkerModel(String name, String surname, int salary, String profession, int id, boolean busy) {
+		this.Name = name;
+		this.Surname = surname;
+		this.Salary = salary;
+		this.Profession = profession;
+		this.Id = id;
+		this.Busy = busy;
+	}
+
 	public WorkerModel() {
 
 	}
@@ -25,7 +34,7 @@ public class WorkerModel implements IWorkerModel {
 
 	@Override
 	public int GetSalary() {
-		return 0;
+		return Salary;
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public interface IWorkerState {
 	 * 
 	 * @param workerId
 	 */
-	IWorkerModel DeleteWorker(int workerId);
+	IWorkerModel DeleteWorker(int workerId) throws Exception;
 
 	static WorkerState getInstance() {return null;};
 

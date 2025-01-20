@@ -9,7 +9,7 @@ public class WorkerCreator {
 	 * 
 	 * @param model
 	 */
-	public IWorkerModel CreateNewWorker(IWorkerModel model) throws Exception {
+	public IWorkerModel CreateNewWorker(IWorkerModel model) {
 		if (WorkerState.getInstance().InsertWorker(model))
 			return model;
 		return null;
