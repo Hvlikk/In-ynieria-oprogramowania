@@ -1,6 +1,7 @@
 package System.WorkerApiModelLayer.WorkersApiModel;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -15,7 +16,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
-class WorkerStateTests implements TestExecutionExceptionHandler {
+public class WorkerStateTests implements TestExecutionExceptionHandler {
 
     private WorkerState workerState;
 
@@ -74,7 +75,8 @@ class WorkerStateTests implements TestExecutionExceptionHandler {
     }
 
     @Test
-    void testInsertWorkerThrowsException() {
+    @Tag("Exception")
+    public void testInsertWorkerThrowsException() {
         //Given
         Mockito.when(mockWorker.GetId()).thenReturn(-1);
 
@@ -93,7 +95,8 @@ class WorkerStateTests implements TestExecutionExceptionHandler {
             "1, true"
     })
     @ExtendWith(WorkerStateTests.class)
-    void testParametrizedWithExceptionsInsertWorker(int workerId, boolean expectedResult) throws Exception {
+    @Tag("Exception")
+    public void testParametrizedWithExceptionsInsertWorker(int workerId, boolean expectedResult) throws Exception {
         //Given
         Mockito.when(mockWorker.GetId()).thenReturn(workerId);
 
@@ -138,7 +141,8 @@ class WorkerStateTests implements TestExecutionExceptionHandler {
     }
 
     @Test
-    void testDeleteWorkerThrowsException() {
+    @Tag("Exception")
+    public void testDeleteWorkerThrowsException() {
         //Given
         Mockito.when(mockWorker.GetId()).thenReturn(1);
 
