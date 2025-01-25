@@ -1,0 +1,8 @@
+---
+Suite
+---
+!1 Zestaw testów ${PAGE_NAME}
+!contents -R2 -g -p -f -h
+
+"Testy akceptacyjne WorkerApi"
+!path C:\Users\Admin\IdeaProjects\In-ynieria-oprogramowania\target\classes
