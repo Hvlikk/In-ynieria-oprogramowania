@@ -68,7 +68,7 @@ public class WorkerStateTests implements TestExecutionExceptionHandler {
         Mockito.when(mockWorker.GetId()).thenReturn(0);
 
         //When
-        boolean result = workerState.InsertWorker(mockWorker);
+        boolean result = workerState.InsertWorker(mockWorker); 
 
         //Then
         assertTrue(result, "Worker should be inserted successfully.");
